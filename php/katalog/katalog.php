@@ -260,7 +260,7 @@ include_once('../header.php');
 <br>
 
 <!-- Kartice koje prikazuju artikla i omogućuju unos slika za odabrani artikl -->
-<div class="container">
+<div class="container col-lg-8">
     <div class="row">
 
         <?php
