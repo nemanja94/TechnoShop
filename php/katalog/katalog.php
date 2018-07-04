@@ -255,6 +255,110 @@ include_once('../header.php');
 </div>
 <!--Forma za unos artikala-->
 
+<br>
+<hr>
+<br>
+
+<!-- Kartice koje prikazuju artikla i omogućuju unos slika za odabrani artikl -->
+<div class="container">
+    <div class="row">
+
+        <?php
+
+        try {
+
+            //Prikaz kartica sa podacima o artiklima
+            $pdo = Database::connect();
+
+            $queryArtikli = $pdo->prepare(
+                'SELECT * FROM TechnoShop.Artikl'
+            );
+
+            $queryArtikli->execute();
+
+            $c = 0;
+
+            while ($rowArtikli = $queryArtikli->fetch()) {
+
+                echo '<div class="col-sm-4" style="margin-bottom: 2%;">
+                        <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
+
+                //Prikaz slika u carusel-u
+                $sifraArtikla = $rowArtikli['artikl_sifra'];
+
+                $querySlike = $pdo->prepare(
+                    'SELECT * FROM TechnoShop.Slike WHERE artikl_sifra = :sifraArtikla;'
+                );
+
+                $querySlike->bindParam('sifraArtikla', $sifraArtikla);
+
+                $querySlike->execute();
+
+                echo '
+                    <div id="' . $c . '" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">';
+
+                $brojac = 0;
+
+                while ($rowSlike = $querySlike->fetch()) {
+
+                    $folder = htmlspecialchars($rowSlike['artikl_sifra']);
+                    $slika = htmlspecialchars($rowSlike['slika']);
+
+                    if ($brojac <= 0) {
+                        echo '
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
+                            </div>';
+                        $brojac++;
+                    } else {
+                        echo '
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="' . $folder . '/' . $slika . '">
+                            </div>';
+                        $brojac++;
+                    }
+
+                }
+                //Prikaz slika u carusel-u
+
+                echo '</div>
+                    <a class="carousel-control-prev" href="#' . $c . '" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#' . $c . '" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Naziv: ' . $rowArtikli['artikl_naziv'] . '</h3>
+                        <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
+                        <p class="card-title">Šifra: ' . $rowArtikli['artikl_sifra'] . '</p>
+                        <p class="card-title">Cena: ' . $rowArtikli['artikl_cena'] . 'rsd</p>
+                    </div>
+                </div>
+            </div>';
+
+                $c++;
+
+            }
+
+            Database::disconnect();
+            //Prikaz kartica sa podacima o artiklima
+
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+
+        }
+
+        ?>
+    </div>
+</div>
+<!-- Kartice koje prikazuju kategorije -->
+
 <?php
     include_once('../footer.php');
 ?>

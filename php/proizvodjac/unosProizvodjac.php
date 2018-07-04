@@ -167,11 +167,6 @@ include_once('../header.php');
 </div>
 <!-- Kartice koje prikazuju kategorije -->
 
-<!-- bootstrap -->
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/popper.min.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<!-- bootstrap -->
-
-</body>
-</html>
+<?php
+    include_once('../footer.php');
+?>
