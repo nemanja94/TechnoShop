@@ -1,229 +1,306 @@
-CREATE DATABASE  IF NOT EXISTS `TechnoShop` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `TechnoShop`;
--- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.4.15.10
+-- https://www.phpmyadmin.net
 --
--- Host: localhost    Database: TechnoShop
--- ------------------------------------------------------
--- Server version	5.7.21
+-- Host: localhost
+-- Generation Time: Jul 04, 2018 at 11:27 AM
+-- Server version: 5.5.56-MariaDB
+-- PHP Version: 7.2.7
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `TechnoShop`
+--
+CREATE DATABASE IF NOT EXISTS `TechnoShop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `TechnoShop`;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `Artikl`
 --
 
 DROP TABLE IF EXISTS `Artikl`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Artikl` (
-  `artikl_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `Artikl` (
+  `artikl_id` int(11) NOT NULL,
   `artikl_naziv` varchar(255) NOT NULL,
   `artikl_opis` varchar(255) NOT NULL,
   `artikl_sifra` varchar(45) NOT NULL,
-  `artikl_cena` double NOT NULL,
-  PRIMARY KEY (`artikl_id`),
-  UNIQUE KEY `artikl_id_UNIQUE` (`artikl_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `artikl_cena` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `Artikl`
---
-
-LOCK TABLES `Artikl` WRITE;
-/*!40000 ALTER TABLE `Artikl` DISABLE KEYS */;
-INSERT INTO `Artikl` VALUES (17,'MiÅ¡','efwe qev er v','miÅ¡666',123),(18,'Tastatura','odkcn wjovn wr jvwne o','tast321',321),(19,'ZvuÄnik','kclqmw oign org','zv456',332093),(20,'Laptop','krgn qerog ner oern \r\n','lap1',1234567),(21,'Kabl','audio kabl','kabl311',30);
-/*!40000 ALTER TABLE `Artikl` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `Katalog`
 --
 
 DROP TABLE IF EXISTS `Katalog`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Katalog` (
-  `katalog_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `Katalog` (
+  `katalog_id` int(11) NOT NULL,
   `artikl_id` int(11) NOT NULL,
   `kategorija_id` int(11) NOT NULL,
   `podkategorija_id` int(11) NOT NULL DEFAULT '0',
-  `podpodkategorija_id` int(11) NOT NULL DEFAULT '0',
-  `proizvodjac_id` int(11) NOT NULL,
-  PRIMARY KEY (`katalog_id`),
-  UNIQUE KEY `katalog_id_UNIQUE` (`katalog_id`),
-  UNIQUE KEY `artikle_id_UNIQUE` (`artikl_id`),
-  UNIQUE KEY `kategorije_id_UNIQUE` (`kategorija_id`),
-  KEY `podkategorija_fk_idx` (`podkategorija_id`),
-  KEY `podpodkategorija_fk_idx` (`podpodkategorija_id`),
-  KEY `proizvodjac_fk_idx` (`proizvodjac_id`),
-  CONSTRAINT `artikl_id` FOREIGN KEY (`artikl_id`) REFERENCES `Artikl` (`artikl_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `kategorija_fk` FOREIGN KEY (`kategorija_id`) REFERENCES `Kategorije` (`kategorija_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `podkategorija_fk` FOREIGN KEY (`podkategorija_id`) REFERENCES `Podkategorija` (`podkategorija_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `podpodkategorija_fk` FOREIGN KEY (`podpodkategorija_id`) REFERENCES `Podpodkategorija` (`podpodkategorija_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `proizvodjac_fk` FOREIGN KEY (`proizvodjac_id`) REFERENCES `Proizvodjac` (`proizvodjac_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  `proizvodjac_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `Katalog`
---
-
-LOCK TABLES `Katalog` WRITE;
-/*!40000 ALTER TABLE `Katalog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Katalog` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `Kategorije`
 --
 
 DROP TABLE IF EXISTS `Kategorije`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Kategorije` (
-  `kategorija_id` int(11) NOT NULL AUTO_INCREMENT,
-  `kategorija_naziv` varchar(128) NOT NULL,
-  PRIMARY KEY (`kategorija_id`),
-  UNIQUE KEY `kategorija_id_UNIQUE` (`kategorija_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE IF NOT EXISTS `Kategorije` (
+  `kategorija_id` int(11) NOT NULL,
+  `kategorija_naziv` varchar(128) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Kategorije`
 --
 
-LOCK TABLES `Kategorije` WRITE;
-/*!40000 ALTER TABLE `Kategorije` DISABLE KEYS */;
-INSERT INTO `Kategorije` VALUES (13,'MiÅ¡'),(14,'Tastatura'),(15,'Kablovi');
-/*!40000 ALTER TABLE `Kategorije` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `Kategorije` (`kategorija_id`, `kategorija_naziv`) VALUES
+(16, 'Gotove Konfiguracije'),
+(17, 'Hard Diskovi'),
+(19, 'Mediji'),
+(20, 'Memorije'),
+(21, 'MreÅ¾na oprema'),
+(22, 'Multimedija'),
+(23, 'Navigacije'),
+(24, 'Ostalo'),
+(25, 'RaÄunarske komponente'),
+(26, 'RaÄunarske periferije'),
+(27, 'Ram Memorije'),
+(28, 'Softwer'),
+(29, 'Telefoni'),
+(30, 'Televizori'),
+(31, 'Za vaÅ¡ Auto'),
+(32, 'Laptopovi'),
+(33, 'Software'),
+(34, 'PunjaÄi'),
+(35, 'Toneri i KertridÅ¾i');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `Podkategorija`
 --
 
 DROP TABLE IF EXISTS `Podkategorija`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Podkategorija` (
-  `podkategorija_id` int(11) NOT NULL AUTO_INCREMENT,
-  `podkategorija_naziv` varchar(45) NOT NULL COMMENT 'Tabela koja sadrzi nazive svih podkategorija',
-  PRIMARY KEY (`podkategorija_id`),
-  UNIQUE KEY `podkategorija_id_UNIQUE` (`podkategorija_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE IF NOT EXISTS `Podkategorija` (
+  `podkategorija_id` int(11) NOT NULL,
+  `podkategorija_naziv` varchar(45) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Podkategorija`
 --
 
-LOCK TABLES `Podkategorija` WRITE;
-/*!40000 ALTER TABLE `Podkategorija` DISABLE KEYS */;
-INSERT INTO `Podkategorija` VALUES (3,'BeÅ¾iÄni miÅ¡'),(4,'Audio kablovi'),(5,'MreÅ¾ni kablovi');
-/*!40000 ALTER TABLE `Podkategorija` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `Podkategorija` (`podkategorija_id`, `podkategorija_naziv`) VALUES
+(6, 'Eksterni hard diskovi'),
+(7, 'HDD Rack'),
+(8, 'SSD'),
+(9, 'Acer'),
+(10, 'Asus'),
+(11, 'Lenovo'),
+(12, 'HP'),
+(13, 'Tableti'),
+(14, 'CD-R, CD-RW'),
+(15, 'DVD-R, DVD+R, DVD-RW'),
+(16, 'Kasete'),
+(17, 'Kutije/Kesice CD/DVD'),
+(18, 'Torbice'),
+(19, 'ÄŒitaÄi kartica'),
+(20, 'Kartice'),
+(21, 'USB Memorije'),
+(23, 'Memoriske Kartice'),
+(24, 'Access Points'),
+(25, 'Antene'),
+(26, 'LAN Swicevi'),
+(27, 'MreÅ¾ni adapteri'),
+(28, 'MreÅ¾ni kablovi'),
+(29, 'Ruteri'),
+(30, 'UtiÄnice i Konektori'),
+(31, 'Repiteri'),
+(32, 'CD Radio'),
+(33, 'Digitalni foto-aparati i kamere'),
+(34, 'DVD i BluRay Player'),
+(35, 'Hi-Fi Sistemi'),
+(36, 'Media Player'),
+(37, 'MP3/MP4'),
+(38, 'Resiveri'),
+(39, 'SluÅ¡alice'),
+(40, 'ZvuÄnici'),
+(41, 'BlueBerry'),
+(42, 'Garmin'),
+(43, 'Prosto'),
+(44, 'Adapteri'),
+(45, 'Baterije za UPS'),
+(46, 'Kuleri'),
+(47, 'Naponski adapteri'),
+(48, 'Oprema za KuÄ‡iÅ¡ta'),
+(49, 'ProduÅ¾ni kablovi'),
+(50, 'GrafiÄke karte'),
+(51, 'KuÄ‡iÅ¡ta'),
+(52, 'MatiÄne ploÄe'),
+(53, 'MiÅ¡evi i Podloge'),
+(54, 'Monitori'),
+(55, 'Napajanja'),
+(56, 'OptiÄki ureÄ‘aji'),
+(57, 'Procesori'),
+(58, 'Tastature'),
+(59, 'Laserski Å tampaÄi'),
+(60, 'Multifunkciski ureÄ‘aji'),
+(61, 'UPS-evi'),
+(62, 'PotroÅ¡ni materijal'),
+(63, 'Skeneri'),
+(64, 'DDR2'),
+(65, 'DDR3'),
+(66, 'SD RAM'),
+(67, 'SODIMM'),
+(68, 'DDR4'),
+(69, 'Windows 10 Home/Pro'),
+(70, 'Office 365'),
+(71, 'Office 2016'),
+(72, 'Microsoft'),
+(73, 'Anti Virusi'),
+(74, 'Fiksni telefoni'),
+(75, 'Samsung'),
+(76, 'Huawei'),
+(77, 'Xiaomi'),
+(78, 'Vivax'),
+(79, 'Oukitel'),
+(80, 'Alcatel'),
+(81, 'Nokia'),
+(82, 'CAT'),
+(83, 'Dodatna Oprema'),
+(84, 'LED'),
+(85, 'LCD'),
+(86, 'Smart TV'),
+(87, 'Android Box'),
+(88, 'Kablovi'),
+(89, 'DrÅ¾aÄi za Laptopove'),
+(91, 'Selfi Å¡tapovi'),
+(92, 'DÅ¾ojstici');
 
---
--- Table structure for table `Podpodkategorija`
---
-
-DROP TABLE IF EXISTS `Podpodkategorija`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Podpodkategorija` (
-  `podpodkategorija_id` int(11) NOT NULL AUTO_INCREMENT,
-  `podpodkategorija_naziv` varchar(128) NOT NULL COMMENT 'Tablea koja sadrzi nazive podkategorija od podkategoriaj',
-  PRIMARY KEY (`podpodkategorija_id`),
-  UNIQUE KEY `pod-podkategorija_id_UNIQUE` (`podpodkategorija_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Podpodkategorija`
---
-
-LOCK TABLES `Podpodkategorija` WRITE;
-/*!40000 ALTER TABLE `Podpodkategorija` DISABLE KEYS */;
-INSERT INTO `Podpodkategorija` VALUES (2,'OptiÄki miÅ¡'),(3,'Laserski miÅ¡');
-/*!40000 ALTER TABLE `Podpodkategorija` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `Proizvodjac`
 --
 
 DROP TABLE IF EXISTS `Proizvodjac`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Proizvodjac` (
-  `proizvodjac_id` int(11) NOT NULL AUTO_INCREMENT,
-  `proizvodjac_naziv` varchar(128) NOT NULL,
-  PRIMARY KEY (`proizvodjac_id`),
-  UNIQUE KEY `proizvodjac_id_UNIQUE` (`proizvodjac_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+CREATE TABLE IF NOT EXISTS `Proizvodjac` (
+  `proizvodjac_id` int(11) NOT NULL,
+  `proizvodjac_naziv` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `Proizvodjac`
---
-
-LOCK TABLES `Proizvodjac` WRITE;
-/*!40000 ALTER TABLE `Proizvodjac` DISABLE KEYS */;
-INSERT INTO `Proizvodjac` VALUES (3,'Razer'),(4,'Logitech');
-/*!40000 ALTER TABLE `Proizvodjac` ENABLE KEYS */;
-UNLOCK TABLES;
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `Slike`
 --
 
 DROP TABLE IF EXISTS `Slike`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Slike` (
-  `slika_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `Slike` (
+  `slika_id` int(11) NOT NULL,
   `artikl_sifra` varchar(255) NOT NULL,
-  `slika` varchar(255) NOT NULL,
-  PRIMARY KEY (`slika_id`,`artikl_sifra`),
-  UNIQUE KEY `slika_id_UNIQUE` (`slika_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  `slika` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `Slike`
---
-
-LOCK TABLES `Slike` WRITE;
-/*!40000 ALTER TABLE `Slike` DISABLE KEYS */;
-INSERT INTO `Slike` VALUES (38,'miÅ¡666','miÅ¡666-5a916be22ebe99.49981719.png'),(39,'miÅ¡666','miÅ¡666-5a916be22ebe99.49981719.png'),(40,'tast321','tast321-5a929e785e5156.63785407.png'),(41,'tast321','tast321-5a929e7cc0d567.64150682.png'),(42,'zv456','zv456-5a92ac6fb59081.61532865.png'),(43,'zv456','zv456-5a92ac74032b98.13204632.png'),(44,'lap1','lap1-5a92ac812dcbd1.04658392.png'),(45,'lap1','lap1-5a92ac812dcbd1.04658392.png'),(46,'kabl311','kabl311-5a92c12d842a41.83387633.png'),(47,'kabl311','kabl311-5a92c133edbfa4.13018850.png');
-/*!40000 ALTER TABLE `Slike` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping events for database 'TechnoShop'
+-- Indexes for dumped tables
 --
 
 --
--- Dumping routines for database 'TechnoShop'
+-- Indexes for table `Artikl`
 --
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+ALTER TABLE `Artikl`
+  ADD PRIMARY KEY (`artikl_id`),
+  ADD UNIQUE KEY `artikl_id_UNIQUE` (`artikl_id`);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indexes for table `Katalog`
+--
+ALTER TABLE `Katalog`
+  ADD PRIMARY KEY (`katalog_id`),
+  ADD UNIQUE KEY `katalog_id_UNIQUE` (`katalog_id`),
+  ADD UNIQUE KEY `artikle_id_UNIQUE` (`artikl_id`),
+  ADD UNIQUE KEY `kategorije_id_UNIQUE` (`kategorija_id`),
+  ADD KEY `podkategorija_fk_idx` (`podkategorija_id`),
+  ADD KEY `proizvodjac_fk_idx` (`proizvodjac_id`);
+
+--
+-- Indexes for table `Kategorije`
+--
+ALTER TABLE `Kategorije`
+  ADD PRIMARY KEY (`kategorija_id`),
+  ADD UNIQUE KEY `kategorija_id_UNIQUE` (`kategorija_id`);
+
+--
+-- Indexes for table `Podkategorija`
+--
+ALTER TABLE `Podkategorija`
+  ADD PRIMARY KEY (`podkategorija_id`),
+  ADD UNIQUE KEY `podkategorija_id_UNIQUE` (`podkategorija_id`);
+
+--
+-- Indexes for table `Proizvodjac`
+--
+ALTER TABLE `Proizvodjac`
+  ADD PRIMARY KEY (`proizvodjac_id`),
+  ADD UNIQUE KEY `proizvodjac_id_UNIQUE` (`proizvodjac_id`);
+
+--
+-- Indexes for table `Slike`
+--
+ALTER TABLE `Slike`
+  ADD PRIMARY KEY (`slika_id`,`artikl_sifra`),
+  ADD UNIQUE KEY `slika_id_UNIQUE` (`slika_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Artikl`
+--
+ALTER TABLE `Artikl`
+  MODIFY `artikl_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Katalog`
+--
+ALTER TABLE `Katalog`
+  MODIFY `katalog_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Kategorije`
+--
+ALTER TABLE `Kategorije`
+  MODIFY `kategorija_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT for table `Podkategorija`
+--
+ALTER TABLE `Podkategorija`
+  MODIFY `podkategorija_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=93;
+--
+-- AUTO_INCREMENT for table `Proizvodjac`
+--
+ALTER TABLE `Proizvodjac`
+  MODIFY `proizvodjac_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `Slike`
+--
+ALTER TABLE `Slike`
+  MODIFY `slika_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-02-25 15:01:06
