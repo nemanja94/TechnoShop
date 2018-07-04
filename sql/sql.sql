@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 04, 2018 at 11:27 AM
+-- Generation Time: Jul 04, 2018 at 03:24 PM
 -- Server version: 5.5.56-MariaDB
 -- PHP Version: 7.2.7
 
@@ -35,7 +35,27 @@ CREATE TABLE IF NOT EXISTS `Artikl` (
   `artikl_opis` varchar(255) NOT NULL,
   `artikl_sifra` varchar(45) NOT NULL,
   `artikl_cena` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Artikl`
+--
+
+INSERT INTO `Artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
+(2, 'Nokia 1', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', '1', 100),
+(3, 'Nokia 2', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book\r\n', '2', 200),
+(4, 'Nokia 3', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', '3', 300),
+(5, 'Nokia 4', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', '4', 400),
+(6, 'Nokia 5', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', '5', 500),
+(7, 'Nokia 6', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', '6', 600),
+(8, 'Nokia 7', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', '7', 700),
+(9, 'Nokia 8', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', '9', 800),
+(10, 'Samsung S1', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 's1', 100),
+(11, 'Samsung S2', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 's2', 200),
+(12, 'Samsung s3', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 's3', 300),
+(13, 'Huawei P10', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 'p1', 100),
+(14, 'Huawei P20', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 'p2', 200),
+(15, 'Huawei P30', 'Lorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book', 'p3', 300);
 
 -- --------------------------------------------------------
 
@@ -48,9 +68,18 @@ CREATE TABLE IF NOT EXISTS `Katalog` (
   `katalog_id` int(11) NOT NULL,
   `artikl_id` int(11) NOT NULL,
   `kategorija_id` int(11) NOT NULL,
-  `podkategorija_id` int(11) NOT NULL DEFAULT '0',
+  `podkategorija_id` int(11) NOT NULL,
   `proizvodjac_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Katalog`
+--
+
+INSERT INTO `Katalog` (`katalog_id`, `artikl_id`, `kategorija_id`, `podkategorija_id`, `proizvodjac_id`) VALUES
+(1, 13, 16, 24, 3),
+(2, 3, 22, 19, 1),
+(3, 2, 29, 81, 1);
 
 -- --------------------------------------------------------
 
@@ -202,7 +231,16 @@ DROP TABLE IF EXISTS `Proizvodjac`;
 CREATE TABLE IF NOT EXISTS `Proizvodjac` (
   `proizvodjac_id` int(11) NOT NULL,
   `proizvodjac_naziv` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Proizvodjac`
+--
+
+INSERT INTO `Proizvodjac` (`proizvodjac_id`, `proizvodjac_naziv`) VALUES
+(1, 'Nokia'),
+(2, 'Samsung'),
+(3, 'Huawei');
 
 -- --------------------------------------------------------
 
@@ -215,7 +253,27 @@ CREATE TABLE IF NOT EXISTS `Slike` (
   `slika_id` int(11) NOT NULL,
   `artikl_sifra` varchar(255) NOT NULL,
   `slika` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Slike`
+--
+
+INSERT INTO `Slike` (`slika_id`, `artikl_sifra`, `slika`) VALUES
+(1, '1', '1-5b3cb713c69c10.24152581.jpg'),
+(2, '2', '2-5b3cb71872bcb2.52923787.jpg'),
+(3, '3', '3-5b3cb71f900d28.69218101.jpg'),
+(4, '4', '4-5b3cb72acc11c8.69487001.jpg'),
+(5, '5', '5-5b3cb7329096f6.10718581.jpg'),
+(6, '6', '6-5b3cb738c441f3.98931430.jpg'),
+(7, '7', '7-5b3cb742db97c6.27607864.jpg'),
+(10, 's1', 's1-5b3cb7886309b4.70514066.jpg'),
+(11, 's2', 's2-5b3cb7927aa0a1.98978770.jpg'),
+(12, 's3', 's3-5b3cb79a330d88.26233214.jpg'),
+(13, 'p1', 'p1-5b3cb7a33aab58.11645165.jpg'),
+(14, 'p2', 'p2-5b3cb7b20077a8.91499837.jpg'),
+(15, 'p3', 'p3-5b3cb7bc20acd6.16455969.jpg'),
+(16, '9', '9-5b3cb7dc46f047.65766988.jpg');
 
 --
 -- Indexes for dumped tables
@@ -232,12 +290,7 @@ ALTER TABLE `Artikl`
 -- Indexes for table `Katalog`
 --
 ALTER TABLE `Katalog`
-  ADD PRIMARY KEY (`katalog_id`),
-  ADD UNIQUE KEY `katalog_id_UNIQUE` (`katalog_id`),
-  ADD UNIQUE KEY `artikle_id_UNIQUE` (`artikl_id`),
-  ADD UNIQUE KEY `kategorije_id_UNIQUE` (`kategorija_id`),
-  ADD KEY `podkategorija_fk_idx` (`podkategorija_id`),
-  ADD KEY `proizvodjac_fk_idx` (`proizvodjac_id`);
+  ADD PRIMARY KEY (`katalog_id`);
 
 --
 -- Indexes for table `Kategorije`
@@ -275,12 +328,12 @@ ALTER TABLE `Slike`
 -- AUTO_INCREMENT for table `Artikl`
 --
 ALTER TABLE `Artikl`
-  MODIFY `artikl_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `artikl_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `Katalog`
 --
 ALTER TABLE `Katalog`
-  MODIFY `katalog_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `katalog_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `Kategorije`
 --
@@ -295,12 +348,12 @@ ALTER TABLE `Podkategorija`
 -- AUTO_INCREMENT for table `Proizvodjac`
 --
 ALTER TABLE `Proizvodjac`
-  MODIFY `proizvodjac_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `proizvodjac_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `Slike`
 --
 ALTER TABLE `Slike`
-  MODIFY `slika_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `slika_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

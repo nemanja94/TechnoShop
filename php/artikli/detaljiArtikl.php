@@ -79,7 +79,7 @@ include_once('../header.php');
 
 <!--Forma za unos artikala-->
 <div class="container">
-    <div class="forma bg-dark rounded p-3 mb-5 text-light">
+    <div class="forma bg-dark col-lg-7 rounded p-3 mb-5 text-light">
         <form action="izmeniArtikl.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
 
             <hr>

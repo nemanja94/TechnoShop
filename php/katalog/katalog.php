@@ -91,94 +91,53 @@ function getProizvodjac()
 
 if (isset($_POST['unesi'])) {
 
+    $artikl = null;
+    $kategorija = null;
+    $podkategorija = null;
+    $proizvodjac = null;
 
-    if (!empty($_POST)) {
+    if (isset($_POST['artikl']) && 
+        isset($_POST['katagorija']) && 
+        isset($_POST['podkategorija']) && 
+        isset($_POST['proizvodjac'])) {
+        
+        $artikl = htmlspecialchars($_POST['artikl']);
+        $kategorija = htmlspecialchars($_POST['katagorija']);
+        $podkategorija = htmlspecialchars($_POST['podkategorija']);
+        $proizvodjac = htmlspecialchars($_POST['proizvodjac']);
 
-        // Ne prikazuj greske
-        $naslovError = null;
-        $artiklError = null;
-        $cenaError = null;
-        $opisError = null;
-        $sifraError = null;
+        try {
 
-        // Preuzmi vrednosti od korisnika
-        $naslov = '<p class="text-center te">Popunite zahtevana polja</p>';
-        $naziv = htmlspecialchars($_POST['naziv']);
-        $cena = htmlspecialchars($_POST['cena']);
-        $opis = htmlspecialchars($_POST['opis']);
-        $sifra = htmlspecialchars($_POST['sifra']);
+            $pdo = Database::connect();
 
-        // Omoguci unos u bazu
-        $valid = true;
+            $query = $pdo->prepare(
+                'INSERT INTO
+                TechnoShop.Katalog  (artikl_id, kategorija_id, podkategorija_id, proizvodjac_id)
+            VALUES
+                (:artikl, :katagorija, :podkategorija, :proizvodjac);'
+            );
 
-        // Proveri da li su sva polja popunjena kako treba
-        if (empty($naziv)) {
-            $naslovError = '<h2>Niste uneli jedno od traženih polja</h2>';
-            $artiklError = 'Unesite naziv';
-            $valid = false;
+            $query->bindParam(':artikl', $artikl);
+            $query->bindParam(':katagorija', $kategorija);
+            $query->bindParam(':podkategorija', $podkategorija);
+            $query->bindParam(':proizvodjac', $proizvodjac);
+
+            $query->execute();
+
+            Database::disconnect();
+
+            //Dodati kod za kreiranje direktorijuma
+
+            //header('Location: katalog.php');
+
+        } catch (PDOException $e) {
+
+            echo $e->getMessage();
+
         }
 
-        if (empty($cena)) {
-            $naslovError = '<h2>Niste uneli jedno od traženih polja</h2>';
-            $cenaError = 'Unesite cenu';
-            $valid = false;
-        }
-
-        if (empty($opis)) {
-            $naslovError = '<h2>Niste uneli jedno od traženih polja</h2>';
-            $opisError = 'Unesite opis';
-            $valid = false;
-        }
-
-        if (empty($sifra)) {
-            $naslovError = '<h2>Niste uneli jedno od traženih polja</h2>';
-            $sifraError = 'Unesite šifru';
-            $valid = false;
-        }
-
-        // Ako jesu popunjana kako treba, zapocni unos u bazu
-        if ($valid) {
-
-            try {
-
-                $pdo = Database::connect();
-
-                $query = $pdo->prepare(
-                    'INSERT INTO
-                    TechnoShop.Katalog  (artikl_id, kategorija_id, podkategorija_id, proizvodjac_id)
-                VALUES
-                    (:naziv, :opis, :sifra, :cena);'
-                );
-
-                $query->bindParam(':naziv', $naziv);
-                $query->bindParam(':cena', $cena);
-                $query->bindParam(':opis', $opis);
-                $query->bindParam(':sifra', $sifra);
-
-                $query->execute();
-
-                Database::disconnect();
-
-                //Dodati kod za kreiranje direktorijuma
-
-                $path = "/var/www/html/projects/TechnoShop/php/slike/" . $sifra;
-
-                if (mkdir($path, 0777)) {
-                    chmod($path, "nemanja");
-                    echo " radi";
-                } else {
-                    echo " Ne radi";
-                }
-
-
-                header('Location: unosArtikl.php');
-
-            } catch (PDOException $e) {
-
-                echo $e->getMessage();
-
-            }
-        }
+    } else {
+        echo "<h1>Jedno od poljla nije podeseno</h1>";
     }
 }
 
@@ -220,7 +179,7 @@ include_once('../header.php');
 <br>
 <div class="container">
     <h3>
-        Forma za unos novih artikala
+        Forma za uredjivanje kataloga
         <small>
             Ovde možete uneti nove ili izbirsati postojeće artikle iz kataloga.
         </small>
@@ -242,56 +201,49 @@ include_once('../header.php');
         </a>
     </p>
     <div class="collapse p-3 rounded" id="collapseExample">
-        <form action="unosArtikl.php" method="post" enctype="multipart/form-data">
+        <form action="katalog.php" method="post" enctype="multipart/form-data">
 
             <hr>
 
-            <div class="control-group <?php echo !empty($artiklError) ? 'error' : ''; ?>">
+            <div class="control-group">
                 <div class="controls">
+                <label class="text-light text">Odaberite artikl</label>
                     <select name="artikl" class="form-control">
                         <?php getArtikl(); ?>
                     </select>
-                    <?php if (!empty($artiklError)) : ?>
-                        <span class="help-inline text-danger"><?php echo $artiklError; ?></span>
-                    <?php endif; ?>
                 </div>
             </div>
 
             <hr>
 
-            <div class="control-group <?php echo !empty($cenaError) ? 'error' : ''; ?>">
+            <div class="control-group">
                 <div class="controls">
+                <label class="text-light text">Odaberite kategoriju</label>
                     <select name="katagorija" class="form-control">
                         <?php getKategorije() ?>
                     </select>
-                    <?php if (!empty($cenaError)) : ?>
-                        <span class="help-inline text-danger"><?php echo $cenaError; ?></span>
-                    <?php endif; ?>
                 </div>
             </div>
 
             <hr>
 
-            <div class="control-group <?php echo !empty($sifraError) ? 'error' : ''; ?>">
+            <div class="control-group">
                 <div class="controls">
+                <label class="text-light text">Odaberite podkategoriju</label>
                   <select name="podkategorija" class="form-control">
                       <?php getPodkategorije(); ?>
                   </select>
-                    <?php if (!empty($sifraError)) : ?>
-                        <span class="help-inline text-danger"><?php echo $sifraError; ?></span>
-                    <?php endif; ?>
                 </div>
             </div>
 
             <hr>
 
-            <div class="control-group <?php echo !empty($opisError) ? 'error' : ''; ?>">
+            <div class="control-group">
                 <div class="controls">
-                <textarea class="form-control" rows="5" cols="50" name="opis" type="text"
-                          placeholder="Opis artikla"></textarea>
-                    <?php if (!empty($opisError)) : ?>
-                        <span class="help-inline text-danger"><?php echo $opisError; ?></span>
-                    <?php endif; ?>
+                <label class="text-light text">Odaberite proizvodjaca</label>
+                  <select name="proizvodjac" class="form-control">
+                      <?php getProizvodjac(); ?>
+                  </select>
                 </div>
             </div>
 

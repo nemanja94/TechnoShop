@@ -227,10 +227,10 @@ include_once('../header.php');
                       <div class="col-sm-4 mb-2">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
                 echo '<div class="card-body">
-                        <h3 class="card-title text-center">Naziv: ' . $row['artikl_naziv'] . '</h3>
-                        <p class="card-title">Opis: ' . $row['artikl_opis'] . '</p>
-                        <p class="card-title">Šifra: ' . $row['artikl_sifra'] . '</p>
-                        <p class="card-title">Cena: ' . $row['artikl_cena'] . 'rsd</p>
+                        <h3 class="card-title text-center bg-light text-dark px-2 py-1 rounded">Naziv: ' . $row['artikl_naziv'] . '</h3>
+                        <p class="card-title bg-light text-dark px-2 py-1 rounded">Šifra: ' . $row['artikl_sifra'] . '</p>
+                        <p class="card-title bg-light text-dark px-2 py-1 rounded">Cena: ' . $row['artikl_cena'] . 'rsd</p>
+                        <p class="card-title bg-light text-dark px-2 py-1 rounded">Opis: ' . $row['artikl_opis'] . '</p>
                         <div  class="container text-center">
                         <hr class="bg-secondary">
                             <a href="ukloniArtikl.php?id=' . $row['artikl_id'] . '">
