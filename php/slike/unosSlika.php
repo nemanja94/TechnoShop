@@ -180,7 +180,7 @@ include_once('../header.php');
                         <hr>
                         <form action="unosSlika.php?sifra=' . $rowArtikli['artikl_sifra'] . '" method="post" enctype="multipart/form-data">
                             <label class="col-form-label">Odaberite sliku</label>
-                            <input class="input-group" type="file" name="slika">
+                            <input class="input-group bg-primary text-light rounded shadow p-1 m-1" type="file" name="slika">
                             <br>
                             <button class="btn btn-success">Unesi</button>
                         </form>
