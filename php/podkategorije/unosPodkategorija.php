@@ -21,9 +21,7 @@ if (!empty($_POST)) {
 
     // Ako jesu popunjana kako treba, zapocni unos u bazu
     if ($valid) {
-
         try {
-
             $pdo = Database::connect();
 
             $query = $pdo->prepare(
@@ -40,11 +38,8 @@ if (!empty($_POST)) {
             Database::disconnect();
 
             header('Location: unosPodkategorija.php');
-
         } catch (PDOException $e) {
-
             echo $e->getMessage();
-
         }
     }
 }
@@ -67,7 +62,7 @@ include_once('../header.php');
         <a href="../podkategorije/unosPodkategorija.php" class="nav-link btn btn-outline-warning text-secondary mr-1 active">Unos podkategorija</a>
         <a href="../proizvodjac/unosProizvodjac.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos proizvođača</a>
         <a href="../slike/unosSlika.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos slika</a>
-        <a href="../katalog/katalog.php" class="nav-link btn btn-outline-warning text-secondary">Katalog</a>
+        <a href="../katalog/katalog.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Katalog</a>
       </div>
     </div>
   </nav>
@@ -132,7 +127,6 @@ include_once('../header.php');
         <?php
 
         try {
-
             $pdo = Database::connect();
 
             $query = $pdo->prepare(
@@ -142,7 +136,6 @@ include_once('../header.php');
             $query->execute();
 
             while ($row = $query->fetch()) {
-
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                 <div class="card text-white bg-dark" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <div class="card-body">
@@ -154,15 +147,11 @@ include_once('../header.php');
                     </div>
                 </div>
             </div>';
-
             }
 
             Database::disconnect();
-
         } catch (PDOException $e) {
-
             echo $e->getMessage();
-
         }
 
         ?>

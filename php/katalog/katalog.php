@@ -3,9 +3,7 @@ require '../baza/Database.php';
 
 function getArtikl()
 {
-
     try {
-
         $pdo = Database::connect();
         $query = $pdo->prepare("SELECT artikl_id, artikl_naziv FROM TechnoShop.Artikl ORDER BY artikl_naziv ASC;");
         $query->execute();
@@ -14,19 +12,14 @@ function getArtikl()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['artikl_id'] . '">' . $row['artikl_naziv'] . '</option>';
         }
-
     } catch (PDOException $e) {
-
         echo $e->getMessage();
-
     }
 }
 
 function getKategorije()
 {
-
     try {
-
         $pdo = Database::connect();
         $query = $pdo->prepare("SELECT kategorija_id, kategorija_naziv FROM TechnoShop.Kategorije ORDER BY kategorija_naziv ASC;");
         $query->execute();
@@ -35,20 +28,14 @@ function getKategorije()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['kategorija_id'] . '">' . $row['kategorija_naziv'] . '</option>';
         }
-
     } catch (PDOException $e) {
-
         echo $e->getMessage();
-
     }
-
 }
 
 function getPodkategorije()
 {
-
     try {
-
         $pdo = Database::connect();
         $query = $pdo->prepare("SELECT podkategorija_id, podkategorija_naziv FROM TechnoShop.Podkategorija ORDER BY podkategorija_naziv ASC;");
         $query->execute();
@@ -57,20 +44,16 @@ function getPodkategorije()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['podkategorija_id'] . '">' . $row['podkategorija_naziv'] . '</option>';
         }
-
     } catch (PDOException $e) {
-
         echo $e->getMessage();
-
     }
-
 }
-
+/**
+ * Funkcija koja iz baze uzima podatke proizvodjaca
+ */
 function getProizvodjac()
 {
-
     try {
-
         $pdo = Database::connect();
         $query = $pdo->prepare("SELECT proizvodjac_id, proizvodjac_naziv FROM TechnoShop.Proizvodjac ORDER BY proizvodjac_naziv asc ");
         $query->execute();
@@ -79,34 +62,24 @@ function getProizvodjac()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['proizvodjac_id'] . '">' . $row['proizvodjac_naziv'] . '</option>';
         }
-
     } catch (PDOException $e) {
-
         echo $e->getMessage();
-
     }
-
 }
 
 if (isset($_POST['unesi'])) {
-
     $artikl = null;
     $kategorija = null;
     $podkategorija = null;
     $proizvodjac = null;
 
-    if (isset($_POST['artikl']) &&
-        isset($_POST['katagorija']) &&
-        isset($_POST['podkategorija']) &&
-        isset($_POST['proizvodjac'])) {
-
+    if (isset($_POST['artikl']) && isset($_POST['katagorija']) && isset($_POST['podkategorija']) && isset($_POST['proizvodjac'])) {
         $artikl = htmlspecialchars($_POST['artikl']);
         $kategorija = htmlspecialchars($_POST['katagorija']);
         $podkategorija = htmlspecialchars($_POST['podkategorija']);
         $proizvodjac = htmlspecialchars($_POST['proizvodjac']);
 
         try {
-
             $pdo = Database::connect();
 
             $query = $pdo->prepare(
@@ -128,13 +101,9 @@ if (isset($_POST['unesi'])) {
             //Dodati kod za kreiranje direktorijuma
 
             //header('Location: katalog.php');
-
         } catch (PDOException $e) {
-
             echo $e->getMessage();
-
         }
-
     } else {
         echo "<h1>Jedno od poljla nije podeseno</h1>";
     }
@@ -162,7 +131,7 @@ require_once '../header.php';
             <a href="../proizvodjac/unosProizvodjac.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos
                 proizvođača</a>
             <a href="../slike/unosSlika.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos slika</a>
-            <a href="katalog.php" class="nav-link btn btn-outline-warning text-secondary active">Katalog</a>
+            <a href="../katalog/katalog.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Katalog</a>
         </div>
     </div>
 </nav>
@@ -275,7 +244,6 @@ require_once '../header.php';
             $o = 'o' . 0;
 
             while ($rowArtikli = $queryArtikli->fetch()) {
-
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
 
@@ -297,7 +265,6 @@ require_once '../header.php';
                 $brojac = 0;
 
                 while ($rowSlike = $querySlike->fetch()) {
-
                     $folder = htmlspecialchars($rowSlike['artikl_sifra']);
                     $slika = htmlspecialchars($rowSlike['slika']);
 
@@ -314,7 +281,6 @@ require_once '../header.php';
                             </div>';
                         $brojac++;
                     }
-
                 }
                 //Prikaz slika u carusel-u
 
@@ -344,16 +310,12 @@ require_once '../header.php';
 
                 $c++;
                 $o++;
-
             }
 
             Database::disconnect();
             //Prikaz kartica sa podacima o artiklima
-
         } catch (PDOException $e) {
-
             echo $e->getMessage();
-
         }
 
         ?>

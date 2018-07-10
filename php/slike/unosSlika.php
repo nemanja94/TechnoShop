@@ -3,7 +3,6 @@
 require '../baza/Database.php';
 
 if (!empty($_FILES)) {
-
     $artikl_sifra = htmlspecialchars($_GET['sifra']);
 
     $fileName = $_FILES['slika']['name'];
@@ -35,7 +34,6 @@ if (!empty($_FILES)) {
 
 
     try {
-
         $pdo = Database::connect();
 
         $queryArtikli = $pdo->prepare(
@@ -51,13 +49,9 @@ if (!empty($_FILES)) {
         Database::disconnect();
 
         header('Location: unosSlika.php');
-
     } catch (PDOException $e) {
-
         echo $e->getMessage();
-
     }
-
 }
 
 include_once('../header.php');
@@ -78,7 +72,7 @@ include_once('../header.php');
         <a href="../podkategorije/unosPodkategorija.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos podkategorija</a>
         <a href="../proizvodjac/unosProizvodjac.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos proizvođača</a>
         <a href="../slike/unosSlika.php" class="nav-link btn btn-outline-warning text-secondary mr-1 active">Unos slika</a>
-        <a href="../katalog/katalog.php" class="nav-link btn btn-outline-warning text-secondary">Katalog</a>
+        <a href="../katalog/katalog.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Katalog</a>
       </div>
     </div>
   </nav>
@@ -120,7 +114,6 @@ include_once('../header.php');
             $c = 0;
 
             while ($rowArtikli = $queryArtikli->fetch()) {
-
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
 
@@ -142,7 +135,6 @@ include_once('../header.php');
                 $brojac = 0;
 
                 while ($rowSlike = $querySlike->fetch()) {
-
                     $folder = htmlspecialchars($rowSlike['artikl_sifra']);
                     $slika = htmlspecialchars($rowSlike['slika']);
 
@@ -159,7 +151,6 @@ include_once('../header.php');
                             </div>';
                         $brojac++;
                     }
-
                 }
                 //Prikaz slika u carusel-u
 
@@ -189,7 +180,6 @@ include_once('../header.php');
             </div>';
 
                 $c++;
-
             }
 
             
@@ -197,11 +187,8 @@ include_once('../header.php');
 
             Database::disconnect();
             //Prikaz kartica sa podacima o artiklima
-
         } catch (PDOException $e) {
-
             echo $e->getMessage();
-
         }
 
         ?>

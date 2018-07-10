@@ -1,6 +1,6 @@
 <?php
 
-require_once('../baza/Database.php');
+require_once '../baza/Database.php';
 
 $id = htmlspecialchars($_GET['id']);
 
