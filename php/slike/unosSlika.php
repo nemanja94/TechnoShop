@@ -101,7 +101,7 @@ include_once('../header.php');
 <!-- Opis stranice -->
 
 <!-- Kartice koje prikazuju artikla i omogućuju unos slika za odabrani artikl -->
-<div class="container">
+<div class="container col-lg-8">
     <div class="row">
 
         <?php
@@ -121,7 +121,7 @@ include_once('../header.php');
 
             while ($rowArtikli = $queryArtikli->fetch()) {
 
-                echo '<div class="col-sm-4" style="margin-bottom: 2%;">
+                echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
 
                 //Prikaz slika u carusel-u
@@ -175,7 +175,6 @@ include_once('../header.php');
                 </div>
                     <div class="card-body">
                         <h3 class="card-title">Naziv: ' . $rowArtikli['artikl_naziv'] . '</h3>
-                        <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
                         <p class="card-title">Šifra: ' . $rowArtikli['artikl_sifra'] . '</p>
                         <p class="card-title">Cena: ' . $rowArtikli['artikl_cena'] . 'rsd</p>
                         <hr>
@@ -192,6 +191,9 @@ include_once('../header.php');
                 $c++;
 
             }
+
+            
+            // <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
 
             Database::disconnect();
             //Prikaz kartica sa podacima o artiklima

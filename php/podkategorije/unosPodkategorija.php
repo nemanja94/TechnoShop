@@ -143,7 +143,7 @@ include_once('../header.php');
 
             while ($row = $query->fetch()) {
 
-                echo '<div class="col-sm-4" style="margin-bottom: 2%;">
+                echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                 <div class="card text-white bg-dark" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <div class="card-body">
                         <h5 class="card-title">' . $row['podkategorija_naziv'] . '</h5>

@@ -9,6 +9,7 @@ include_once('header.php');
 <!-- Navbar -->
 
 <!-- Opis stranice -->
+
 <hr>
 <div class="container">
     <h3>

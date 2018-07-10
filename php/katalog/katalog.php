@@ -1,5 +1,4 @@
 <?php
-
 require '../baza/Database.php';
 
 function getArtikl()
@@ -96,11 +95,11 @@ if (isset($_POST['unesi'])) {
     $podkategorija = null;
     $proizvodjac = null;
 
-    if (isset($_POST['artikl']) && 
-        isset($_POST['katagorija']) && 
-        isset($_POST['podkategorija']) && 
+    if (isset($_POST['artikl']) &&
+        isset($_POST['katagorija']) &&
+        isset($_POST['podkategorija']) &&
         isset($_POST['proizvodjac'])) {
-        
+
         $artikl = htmlspecialchars($_POST['artikl']);
         $kategorija = htmlspecialchars($_POST['katagorija']);
         $podkategorija = htmlspecialchars($_POST['podkategorija']);
@@ -141,12 +140,8 @@ if (isset($_POST['unesi'])) {
     }
 }
 
-include_once('../header.php');
+require_once '../header.php';
 ?>
-
-
-
-<body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -231,7 +226,7 @@ include_once('../header.php');
                 <div class="controls">
                 <label class="text-light text">Odaberite podkategoriju</label>
                   <select name="podkategorija" class="form-control">
-                      <?php getPodkategorije(); ?>
+                    <?php getPodkategorije(); ?>
                   </select>
                 </div>
             </div>
@@ -242,7 +237,7 @@ include_once('../header.php');
                 <div class="controls">
                 <label class="text-light text">Odaberite proizvodjaca</label>
                   <select name="proizvodjac" class="form-control">
-                      <?php getProizvodjac(); ?>
+                    <?php getProizvodjac(); ?>
                   </select>
                 </div>
             </div>
@@ -277,10 +272,11 @@ include_once('../header.php');
             $queryArtikli->execute();
 
             $c = 0;
+            $o = 'o' . 0;
 
             while ($rowArtikli = $queryArtikli->fetch()) {
 
-                echo '<div class="col-sm-4" style="margin-bottom: 2%;">
+                echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
 
                 //Prikaz slika u carusel-u
@@ -314,7 +310,7 @@ include_once('../header.php');
                     } else {
                         echo '
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="' . $folder . '/' . $slika . '">
+                                <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
                             </div>';
                         $brojac++;
                     }
@@ -334,14 +330,18 @@ include_once('../header.php');
                 </div>
                     <div class="card-body">
                         <h3 class="card-title">Naziv: ' . $rowArtikli['artikl_naziv'] . '</h3>
-                        <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
                         <p class="card-title">Šifra: ' . $rowArtikli['artikl_sifra'] . '</p>
                         <p class="card-title">Cena: ' . $rowArtikli['artikl_cena'] . 'rsd</p>
+                        <button class="btn btn-outline-info mb-1" data-toggle="collapse" data-target="#' . $o . '">Collapsible</button>
+                        <div id="' . $o . '" class="collapse">
+                            <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
+                        </div>
                     </div>
                 </div>
             </div>';
 
                 $c++;
+                $o++;
 
             }
 
@@ -360,5 +360,5 @@ include_once('../header.php');
 <!-- Kartice koje prikazuju kategorije -->
 
 <?php
-    include_once('../footer.php');
+require_once '../footer.php';
 ?>
