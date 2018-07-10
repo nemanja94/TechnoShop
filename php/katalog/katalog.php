@@ -333,11 +333,11 @@ require_once '../header.php';
                         <p class="card-title">Šifra: ' . $rowArtikli['artikl_sifra'] . '</p>
                         <p class="card-title">Cena: ' . $rowArtikli['artikl_cena'] . 'rsd</p>
                         
-                        <button class="btn btn-outline-info mb-1" data-toggle="collapse" data-target="#' . $o . '">Collapsible</button>
+                        <button class="btn btn-outline-info mb-1" data-toggle="collapse" data-target="#' . $o . '">Info</button>
                         <div id="' . $o . '" class="collapse">
                             <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>';
