@@ -14,6 +14,7 @@ try {
     $rs = $query->execute();
 
     echo "Dobijanje broja rezultata";
+    echo $nm;
     $nm = $rs->num_rows;
 
     echo $nm;
