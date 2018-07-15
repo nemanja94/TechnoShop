@@ -20,8 +20,8 @@ Database::disconnect();
 echo "While petlja - 20\n";
 while ($sifra = $query->fetch()) {
     $path = "/var/www/html/projects/TechnoShop/php/slike/" . $sifra;
-    if (mkdir($path, 0777)) {
-        chmod($path, "root");
+    if (mkdir($path, 0777, true)) {
+        chmod($path, 0777);
         echo "Folder " . $sifra . " je kreiran.";
     } else {
         echo "Folder " . $sifra . " nije kreiran.";
