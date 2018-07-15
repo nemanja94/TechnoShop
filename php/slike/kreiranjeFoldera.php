@@ -25,7 +25,7 @@ try {
             chmod($path, 0777);
             echo "<p style='color: green;'>Folder " . $sifra['artikl_sifra'] . " je kreiran.</p><br>";
         } else {
-            echo "<p style='color: green;'>Folder " . $sifra['artikl_sifra'] . " nije kreiran.</p><br>";
+            echo "<p style='color: red;'>Folder " . $sifra['artikl_sifra'] . " nije kreiran.</p><br>";
         }
     }
     //header("Location: unosArtikl.php");
