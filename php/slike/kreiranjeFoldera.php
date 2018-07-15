@@ -9,7 +9,7 @@ try {
     $pdo = Database::connect();
 
     echo "Upit - 10\n";
-    $query = $pdo->prepare("SELECT `TechnoShop`.`Artikl`.`artikl_sifra` FROM `TechnoShop`.`Artikl`  ASC;");
+    $query = $pdo->prepare("SELECT `TechnoShop`.`Artikl`.`artikl_sifra` FROM `TechnoShop`.`Artikl` ORDER BY `TechnoShop`.`Artikl`.`artikl_sifra` ASC;");
 
     echo "Izvrsenje upita - 13\n";
     $query->execute();
