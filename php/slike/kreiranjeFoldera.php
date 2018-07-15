@@ -1,5 +1,7 @@
 <?php
 
+echo 'Pocinje';
+
 require '../baza/Database.php';
 
             try {
