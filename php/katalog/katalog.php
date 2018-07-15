@@ -7,5 +7,7 @@ try {
     $query = $pdo->prepare("SELECT * FROM TechnoShop.Katalog");
     $rs = $query->execute();
     echo $nm = $rs->num_rows;
+} catch (PDOException $e) {
+    echo $e->getMessage();
 }
 
