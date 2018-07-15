@@ -25,7 +25,7 @@ if (!empty($_POST)) {
             $pdo = Database::connect();
 
             $query = $pdo->prepare(
-                'INSERT INTO TechnoShop.Proizvodjac  (proizvodjac_naziv) VALUES (:naziv);'
+                'INSERT INTO TechnoShop.Proizvodjac (proizvodjac_naziv) VALUES (:naziv);'
             );
 
             $query->bindParam(':naziv', $naziv);
