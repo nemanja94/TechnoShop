@@ -27,9 +27,9 @@ require '../baza/Database.php';
 
                     if (mkdir($path, 0777)) {
                         chmod($path, "root");
-                        return "Folder " . $sifra . " je kreiran.";
+                        echo "Folder " . $sifra . " je kreiran.";
                     } else {
-                        return "Folder " . $sifra . " nije kreiran.";
+                        echo "Folder " . $sifra . " nije kreiran.";
                     }
                 }
 
