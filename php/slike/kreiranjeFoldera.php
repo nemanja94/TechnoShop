@@ -23,9 +23,9 @@ try {
         $path = "/var/www/html/projects/TechnoShop/php/slike/" . $sifra['artikl_sifra'];
         if (mkdir($path, 0777, true)) {
             chmod($path, 0777);
-            echo "Folder " . $sifra['artikl_sifra'] . " je kreiran.<br>";
+            echo "<p sttle='color: green;'>Folder " . $sifra['artikl_sifra'] . " je kreiran.</p><br>";
         } else {
-            echo "Folder " . $sifra['artikl_sifra'] . " nije kreiran.<br>";
+            echo "<p sttle='color: green;'>Folder " . $sifra['artikl_sifra'] . " nije kreiran.</p><br>";
         }
     }
     //header("Location: unosArtikl.php");
