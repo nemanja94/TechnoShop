@@ -3,6 +3,7 @@ include_once '../header.php';
 include '../baza/Database.php';
 
 try {
+    echo "pocetak try";
     $pdo = Database::connect();
     $query = $pdo->prepare("SELECT * FROM TechnoShop.Katalog");
     $rs = $query->execute();
