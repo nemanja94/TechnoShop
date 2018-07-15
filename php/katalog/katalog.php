@@ -5,8 +5,14 @@ include '../baza/Database.php';
 try {
     echo "pocetak try";
     $pdo = Database::connect();
+
+    echo "Pisanje upita";
     $query = $pdo->prepare("SELECT * FROM TechnoShop.Katalog");
+
+    echo "Izvrsenje upita";
     $rs = $query->execute();
+
+    echo "Dobijanje broja rezultata";
     echo $nm = $rs->num_rows;
 } catch (PDOException $e) {
     echo $e->getMessage();
