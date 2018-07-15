@@ -9,9 +9,9 @@ require '../baza/Database.php';
                     'SELECT
                         *
                     FROM
-                        `artikl`
+                        `Artikl`
                     ORDER BY
-                        `artikl`.`artikl_sifra` ASC;'
+                        `Artikl`.`artikl_sifra` ASC;'
                 );
 
                 $query->execute();
@@ -24,7 +24,7 @@ require '../baza/Database.php';
                     $path = "/var/www/html/projects/TechnoShop/php/slike/" . $sifra;
 
                     if (mkdir($path, 0777)) {
-                        chmod($path, "nemanja");
+                        chmod($path, "root");
                         return "Folder " . $sifra . " je kreiran.";
                     } else {
                         return "Folder " . $sifra . " nije kreiran.";
