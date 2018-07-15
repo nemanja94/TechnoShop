@@ -11,3 +11,5 @@ try {
     echo $e->getMessage();
 }
 
+include_once '../footer.php';
+
