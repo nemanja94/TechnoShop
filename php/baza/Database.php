@@ -5,8 +5,8 @@ class Database
 
     private static $dbName = 'technoshop'; // Naziv baze
     private static $dbHost = 'localhost'; // Dodati hosta
-    private static $dbUsername = 'root'; // Dodati username
-    private static $dbUserPassword = 'Root@1211'; // Dodati password
+    private static $dbUsername = 'technoShop'; // Dodati username
+    private static $dbUserPassword = 'TechnoShop@1211'; // Dodati password
 
     private static $cont = null;
 
