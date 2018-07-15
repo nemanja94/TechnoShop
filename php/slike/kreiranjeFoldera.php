@@ -1,23 +1,23 @@
 <?php
 
-echo 'Pocinje - 3\n';
+echo "Pocinje - 3\n";
 
-require '../baza/Database.php';
+require "../baza/Database.php";
 
-echo 'PDO - 7\n';
+echo "PDO - 7\n";
 $pdo = Database::connect();
 
-echo 'Upit - 10\n';
-$query = $pdo->prepare('SELECT *  FROM `Artikl` ORDER BY `Artikl`.`artikl_sifra` ASC;');
+echo "Upit - 10\n";
+$query = $pdo->prepare("SELECT * FROM `Artikl` ORDER BY `Artikl`.`artikl_sifra` ASC");
 
-echo 'Izvrsenje upita - 13\n';
+echo "Izvrsenje upita - 13\n";
 $query->execute();
 
-echo 'Raskidanje konekcije - 16\n';
+echo "Raskidanje konekcije - 16\n";
 Database::disconnect();
 //Dodati kod za kreiranje direktorijuma
 
-echo 'While petlja - 20\n';
+echo "While petlja - 20\n";
 while ($sifra = $query->fetch()) {
     $path = "/var/www/html/projects/TechnoShop/php/slike/" . $sifra;
     if (mkdir($path, 0777)) {
@@ -27,4 +27,4 @@ while ($sifra = $query->fetch()) {
         echo "Folder " . $sifra . " nije kreiran.";
     }
 }
-//header('Location: unosArtikl.php');
+//header("Location: unosArtikl.php");
