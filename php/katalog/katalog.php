@@ -3,6 +3,7 @@ include_once '../header.php';
 include '../baza/Database.php';
 
 try {
+    $nm = 0;
     echo "pocetak try";
     $pdo = Database::connect();
 
