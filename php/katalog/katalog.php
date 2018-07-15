@@ -13,7 +13,9 @@ try {
     $rs = $query->execute();
 
     echo "Dobijanje broja rezultata";
-    echo $nm = $rs->num_rows;
+    $nm = $rs->num_rows;
+
+    echo $nm;
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
