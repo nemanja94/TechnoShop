@@ -15,7 +15,7 @@ try {
 
     echo "Dobijanje broja rezultata";
     echo $nm;
-    $nm = $rs->num_rows;
+    $nm = $rs->rowCount();
 
     echo $nm;
 } catch (PDOException $e) {
