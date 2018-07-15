@@ -235,7 +235,7 @@ require_once '../header.php';
             $pdo = Database::connect();
 
             $queryArtikli = $pdo->prepare(
-                'SELECT * FROM TechnoShop.Artikl'
+                'SELECT * FROM TechnoShop.Artikl limit 50'
             );
 
             $queryArtikli->execute();
