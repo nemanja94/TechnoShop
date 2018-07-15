@@ -22,7 +22,7 @@ try {
     while ($sifra = $query->fetch()) {
         $path = "/var/www/html/projects/TechnoShop/php/slike/" . $sifra['artikl_sifra'];
         if (mkdir($path, 0777, true)) {
-            chmod($path, 0777);
+            chmod($path, 'root:apache');
             echo "<p style='color: green;'>Folder " . $sifra['artikl_sifra'] . " je kreiran.</p><br>";
         } else {
             echo "<p style='color: red;'>Folder " . $sifra['artikl_sifra'] . " nije kreiran.</p><br>";
