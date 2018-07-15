@@ -11,11 +11,11 @@ try {
     $query = $pdo->prepare("SELECT * FROM TechnoShop.Katalog");
 
     echo "Izvrsenje upita";
-    $rs = $query->execute();
+    $query->execute();
 
     echo "Dobijanje broja rezultata";
     echo $nm;
-    $nm = $rs->rowCount();
+    $nm = $query->rowCount();
 
     echo $nm;
 } catch (PDOException $e) {
