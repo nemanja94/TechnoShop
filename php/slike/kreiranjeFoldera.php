@@ -8,7 +8,7 @@ echo "PDO - 7\n";
 $pdo = Database::connect();
 
 echo "Upit - 10\n";
-$query = $pdo->prepare("SELECT * FROM `Artikl` ORDER BY `Artikl`.`artikl_sifra` ASC");
+$query = $pdo->prepare("SELECT artikl_sifra FROM `Artikl` ORDER BY `Artikl`.`artikl_sifra` ASC");
 
 echo "Izvrsenje upita - 13\n";
 $query->execute();
