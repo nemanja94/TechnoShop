@@ -27,6 +27,7 @@ function getKategorije()
         Database::disconnect();
 
         while ($row = $query->fetch()) {
+            echo '<option value="">Odaberite kategoriju</option>';
             echo '<option value="' . $row['kategorija_id'] . '">' . $row['kategorija_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
@@ -43,7 +44,7 @@ function getPodkategorije()
         Database::disconnect();
 
         while ($row = $query->fetch()) {
-            echo '<option value="' . $row['podkategorija_id'] . '">' . $row['podkategorija_naziv'] . '</option>';
+            echo '<option value="' . $row['podkategorija_id'] . '">' . $row['Odaberite podkategoriju'] . '</option>';
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
@@ -61,7 +62,7 @@ function getProizvodjac()
         Database::disconnect();
 
         while ($row = $query->fetch()) {
-            echo '<option value="' . $row['proizvodjac_id'] . '">' . $row['proizvodjac_naziv'] . '</option>';
+            echo '<option value="' . $row['proizvodjac_id'] . '">' . $row['Odaberite proizvodjača'] . '</option>';
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
@@ -172,7 +173,7 @@ require_once '../header.php';
 
             <div class="control-group">
                 <div class="controls">
-                <label class="text-light text">Odaberite artikl</label>
+                <!-- <label class="text-light text">Odaberite artikl</label> -->
                     <select name="artikl" class="form-control">
                         <?php getArtikl(); ?>
                     </select>
@@ -183,7 +184,7 @@ require_once '../header.php';
 
             <div class="control-group">
                 <div class="controls">
-                <label class="text-light text">Odaberite kategoriju</label>
+                <!-- <label class="text-light text">Odaberite kategoriju</label> -->
                     <select name="katagorija" class="form-control">
                         <?php getKategorije(); ?>
                     </select>
@@ -194,7 +195,7 @@ require_once '../header.php';
 
             <div class="control-group">
                 <div class="controls">
-                <label class="text-light text">Odaberite podkategoriju</label>
+                <!-- <label class="text-light text">Odaberite podkategoriju</label> -->
                   <select name="podkategorija" class="form-control">
                     <?php getPodkategorije(); ?>
                   </select>
@@ -205,7 +206,7 @@ require_once '../header.php';
 
             <div class="control-group">
                 <div class="controls">
-                <label class="text-light text">Odaberite proizvodjaca</label>
+                <!-- <label class="text-light text">Odaberite proizvodjaca</label> -->
                   <select name="proizvodjac" class="form-control">
                     <?php getProizvodjac(); ?>
                   </select>
