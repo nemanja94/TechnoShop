@@ -44,7 +44,8 @@ function getPodkategorije()
         Database::disconnect();
 
         while ($row = $query->fetch()) {
-            echo '<option value="' . $row['podkategorija_id'] . '">' . $row['Odaberite podkategoriju'] . '</option>';
+            echo '<option value="">Odaberite podkategoriju</option>';
+            echo '<option value="' . $row['podkategorija_id'] . '">' . $row['podkategorija_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
@@ -62,7 +63,8 @@ function getProizvodjac()
         Database::disconnect();
 
         while ($row = $query->fetch()) {
-            echo '<option value="' . $row['proizvodjac_id'] . '">' . $row['Odaberite proizvodjača'] . '</option>';
+            echo '<option value="">Odaberite proizvodjača</option>';
+            echo '<option value="' . $row['proizvodjac_id'] . '">' . $row['proizvodjac_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
