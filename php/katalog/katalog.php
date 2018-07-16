@@ -8,7 +8,7 @@ function getArtikl()
         $query = $pdo->prepare("SELECT artikl_id, artikl_naziv FROM TechnoShop.Artikl ORDER BY artikl_naziv ASC;");
         $query->execute();
         Database::disconnect();
-
+        
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['artikl_id'] . '">' . $row['artikl_naziv'] . '</option>';
         }
@@ -184,7 +184,7 @@ require_once '../header.php';
                 <div class="controls">
                 <label class="text-light text">Odaberite kategoriju</label>
                     <select name="katagorija" class="form-control">
-                        <?php getKategorije() ?>
+                        <?php getKategorije(); ?>
                     </select>
                 </div>
             </div>
