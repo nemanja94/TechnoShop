@@ -8,8 +8,9 @@ function getArtikl()
         $query = $pdo->prepare("SELECT artikl_id, artikl_naziv FROM TechnoShop.Artikl ORDER BY artikl_naziv ASC;");
         $query->execute();
         Database::disconnect();
-        
+
         while ($row = $query->fetch()) {
+            echo '<option value="">Odaberite artikl</option>';
             echo '<option value="' . $row['artikl_id'] . '">' . $row['artikl_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
