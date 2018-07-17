@@ -280,7 +280,7 @@ require_once '../header.php';
                     } else {
                         echo '
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="' . $folder . '/' . $slika . '">
+                                <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
                             </div>';
                         $brojac++;
                     }
