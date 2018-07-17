@@ -327,7 +327,7 @@ require_once '../header.php';
                         <p class="card-title">Cena: ' . $artikl_cena . 'rsd</p>
                         <p>
                             <a class="btn btn-outline-info shadow"
-                                data-toggle="collapse" href="#collapseOpis" role="button" aria-expanded="false"
+                                data-toggle="collapse" href="#collapseOpis' . $c . '" role="button" aria-expanded="false"
                                 aria-controls="collapseOpis">
                                 Info
                             </a>
