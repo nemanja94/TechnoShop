@@ -293,7 +293,7 @@ require_once '../header.php';
                 //Prikaz slika u carusel-u
 
                 //Prikaz info u telu kartice
-                $queryArtiklPodaci $pdo->prepare("SELECT artikl_naziv, artikl_cena, artikl_opis
+                $queryArtiklPodaci = $pdo->prepare("SELECT artikl_naziv, artikl_cena, artikl_opis
                                                  FROM TechnoShop.Artikl
                                                  WHERE Artikl.artikl_sifra = :sifraArtikla");
 
