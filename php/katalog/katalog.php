@@ -328,11 +328,11 @@ require_once '../header.php';
                         <p>
                             <a class="btn btn-outline-info shadow"
                                 data-toggle="collapse" href="#collapseOpis' . $c . '" role="button" aria-expanded="false"
-                                aria-controls="collapseOpis">
+                                aria-controls="collapseOpis' . $c . '">
                                 Info
                             </a>
                         </p>
-                            <div class="collapse p-3 rounded" id="collapseOpis">
+                            <div class="collapse p-3 rounded" id="collapseOpis' . $c . '">
                             <p>' . $artikl_opis . '</p>
                             </div>
                     </div>
