@@ -333,7 +333,7 @@ require_once '../header.php';
                             </a>
                         </p>
                             <div class="collapse p-3 rounded" id="collapseOpis">
-                            ' . $artikl_opis . '
+                            <p>' . $artikl_opis . '</p>
                             </div>
                     </div>
                 </div>
