@@ -163,8 +163,7 @@ require_once '../header.php';
 <!--Forma za unos artikala-->
 <div class="container col-lg-7 col-md-7 text-center bg-dark pb-3 rounded">
     <p>
-        <a class="btn btn-primary"
-           style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"
+        <a class="btn btn-primary shadow"
            data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
            aria-controls="collapseExample">
             Forma za unos artikala
@@ -241,20 +240,24 @@ require_once '../header.php';
             $pdo = Database::connect();
 
             $queryArtikliKatalog = $pdo->prepare(
-                'SELECT * FROM TechnoShop.Katalog'
+                'SELECT artikl_sifra, kategorija_id, podkategorija_id, proizvodjac_id FROM TechnoShop.Katalog'
             );
 
             $queryArtikliKatalog->execute();
 
             $c = 0;
 
-            while ($rowArtikli = $queryArtikliKatalog->fetch()) {
+            while ($rowArtikliKatalog = $queryArtikliKatalog->fetch()) {
+
+                $sifraArtikla = $rowArtikliKatalog['artikl_sifra'];
+                $kategorija_id = $rowArtikliKatalog['kategorija_id'];
+                $podkategorija_id = $rowArtikliKatalog['podkategorija_id'];
+                $proizvodjac_id = $rowArtikliKatalog['proizvodjac_id'];
+
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
-
+                
                 //Prikaz slika u carusel-u
-                $sifraArtikla = $rowArtikli['artikl_sifra'];
-
                 $querySlike = $pdo->prepare(
                     'SELECT * FROM TechnoShop.Slike WHERE artikl_sifra = :sifraArtikla;'
                 );
@@ -289,6 +292,26 @@ require_once '../header.php';
                 }
                 //Prikaz slika u carusel-u
 
+                //Prikaz info u telu kartice
+                $queryArtiklPodaci->bindParam("SELECT artikl_naziv, artikl_cena, artikl_opis
+                                                FROM TechnoShop.Artik
+                                                WHERE Artikl.artikl_sifra = :sifraArtikla");
+
+                $queryArtiklPodaci->bindParam('sifraArtikla', $sifraArtikla);
+
+                $queryArtiklPodaci->execute();
+
+                $artikl_naziv = "";
+                $artikl_cena = "";
+                $artikl_opis = "";
+
+                while ($rowPodaci = $queryArtiklPodaci->fetch()) {
+                    $artikl_naziv = $rowPodaci['artikl_naziv'];
+                    $artikl_cena = $rowPodaci['artikl_cena'];
+                    $artikl_opis = $rowPodaci['artikl_opis'];
+                }
+
+
                 echo '</div>
                     <a class="carousel-control-prev" href="#' . $c . '" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -300,16 +323,19 @@ require_once '../header.php';
                     </a>
                 </div>
                     <div class="card-body">
-                        <h3 class="card-title">Naziv: ' . $rowArtikli['artikl_naziv'] . '</h3>
-                        <p class="card-title">Šifra: ' . $rowArtikli['artikl_sifra'] . '</p>
-                        <p class="card-title">Cena: ' . $rowArtikli['artikl_cena'] . 'rsd</p>
-                        <hr>
-                        <form action="unosSlika.php?sifra=' . $rowArtikli['artikl_sifra'] . '" method="post" enctype="multipart/form-data">
-                            <label class="col-form-label">Odaberite sliku</label>
-                            <input class="input-group bg-primary text-light rounded shadow p-1 m-1" type="file" name="slika">
-                            <br>
-                            <button class="btn btn-success">Unesi</button>
-                        </form>
+                        <h3 class="card-title">Naziv: ' . $artikl_naziv . '</h3>
+                        <p class="card-title">Šifra: ' . $sifraArtikla . '</p>
+                        <p class="card-title">Cena: ' . $artikl_cena . 'rsd</p>
+                        <p>
+                            <a class="btn btn-outline-info shadow"
+                                data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                                aria-controls="collapseExample">
+                                Info
+                            </a>
+                        </p>
+                            <div class="collapse p-3 rounded" id="collapseExample">
+                            ' . $artikl_opis . '
+                            </div>
                     </div>
                 </div>
             </div>';
@@ -318,7 +344,7 @@ require_once '../header.php';
             }
 
             
-            // <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
+            // <p class="card-title">Opis: ' . $rowArtikliKatalog['artikl_opis'] . '</p>
 
             Database::disconnect();
             //Prikaz kartica sa podacima o artiklima
