@@ -82,31 +82,31 @@ if (isset($_POST['unesi'])) {
         $kategorija = htmlspecialchars($_POST['katagorija']);
         $podkategorija = htmlspecialchars($_POST['podkategorija']);
         $proizvodjac = htmlspecialchars($_POST['proizvodjac']);
+        
+        if (isset(POST_['unesi'])) {
+            try {
+                $pdo = Database::connect();
 
-        try {
-            $pdo = Database::connect();
-
-            $query = $pdo->prepare(
+                $query = $pdo->prepare(
                 'INSERT INTO
                 TechnoShop.Katalog  (artikl_id, kategorija_id, podkategorija_id, proizvodjac_id)
             VALUES
                 (:artikl, :katagorija, :podkategorija, :proizvodjac);'
             );
 
-            $query->bindParam(':artikl', $artikl);
-            $query->bindParam(':katagorija', $kategorija);
-            $query->bindParam(':podkategorija', $podkategorija);
-            $query->bindParam(':proizvodjac', $proizvodjac);
+                $query->bindParam(':artikl', $artikl);
+                $query->bindParam(':katagorija', $kategorija);
+                $query->bindParam(':podkategorija', $podkategorija);
+                $query->bindParam(':proizvodjac', $proizvodjac);
 
-            $query->execute();
+                $query->execute();
 
-            Database::disconnect();
+                Database::disconnect();
 
-            //Dodati kod za kreiranje direktorijuma
-
-            //header('Location: katalog.php');
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+                //header('Location: katalog.php');
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
     } else {
         echo "<h1>Jedno od poljla nije podeseno</h1>";
@@ -239,13 +239,12 @@ require_once '../header.php';
             $pdo = Database::connect();
 
             $queryArtikli = $pdo->prepare(
-                'SELECT * FROM TechnoShop.Katalog limit 50'
+                'SELECT * FROM TechnoShop.Artikl'
             );
 
             $queryArtikli->execute();
 
             $c = 0;
-            $o = 'o' . 0;
 
             while ($rowArtikli = $queryArtikli->fetch()) {
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
@@ -275,13 +274,13 @@ require_once '../header.php';
                     if ($brojac <= 0) {
                         echo '
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
+                                <img class="d-block w-100" src="' . $folder . '/' . $slika . '">
                             </div>';
                         $brojac++;
                     } else {
                         echo '
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
+                                <img class="d-block w-100" src="' . $folder . '/' . $slika . '">
                             </div>';
                         $brojac++;
                     }
@@ -302,19 +301,22 @@ require_once '../header.php';
                         <h3 class="card-title">Naziv: ' . $rowArtikli['artikl_naziv'] . '</h3>
                         <p class="card-title">Šifra: ' . $rowArtikli['artikl_sifra'] . '</p>
                         <p class="card-title">Cena: ' . $rowArtikli['artikl_cena'] . 'rsd</p>
-                        
-                        <button class="btn btn-outline-info mb-1" data-toggle="collapse" data-target="#' . $o . '">Info</button>
-                        <div id="' . $o . '" class="collapse">
-                            <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
-                        </div>
-
+                        <hr>
+                        <form action="unosSlika.php?sifra=' . $rowArtikli['artikl_sifra'] . '" method="post" enctype="multipart/form-data">
+                            <label class="col-form-label">Odaberite sliku</label>
+                            <input class="input-group bg-primary text-light rounded shadow p-1 m-1" type="file" name="slika">
+                            <br>
+                            <button class="btn btn-success">Unesi</button>
+                        </form>
                     </div>
                 </div>
             </div>';
 
                 $c++;
-                $o++;
             }
+
+            
+            // <p class="card-title">Opis: ' . $rowArtikli['artikl_opis'] . '</p>
 
             Database::disconnect();
             //Prikaz kartica sa podacima o artiklima
@@ -326,7 +328,6 @@ require_once '../header.php';
     </div>
 </div>
 <!-- Kartice koje prikazuju kategorije -->
-
 <?php
 require_once '../footer.php';
 ?>
