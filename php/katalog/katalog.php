@@ -294,7 +294,7 @@ require_once '../header.php';
 
                 //Prikaz info u telu kartice
                 $queryArtiklPodaci->bindParam("SELECT artikl_naziv, artikl_cena, artikl_opis
-                                                FROM TechnoShop.Artik
+                                                FROM TechnoShop.Artikl
                                                 WHERE Artikl.artikl_sifra = :sifraArtikla");
 
                 $queryArtiklPodaci->bindParam('sifraArtikla', $sifraArtikla);
