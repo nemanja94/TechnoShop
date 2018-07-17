@@ -164,12 +164,12 @@ require_once '../header.php';
 <div class="container col-lg-7 col-md-7 text-center bg-dark pb-3 rounded">
     <p>
         <a class="btn btn-primary shadow"
-           data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-           aria-controls="collapseExample">
+           data-toggle="collapse" href="#collapseForma" role="button" aria-expanded="false"
+           aria-controls="collapseForma">
             Forma za unos artikala
         </a>
     </p>
-    <div class="collapse p-3 rounded" id="collapseExample">
+    <div class="collapse p-3 rounded" id="collapseForma">
         <form action="katalog.php" method="post" enctype="multipart/form-data">
 
             <hr>
@@ -327,12 +327,12 @@ require_once '../header.php';
                         <p class="card-title">Cena: ' . $artikl_cena . 'rsd</p>
                         <p>
                             <a class="btn btn-outline-info shadow"
-                                data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-                                aria-controls="collapseExample">
+                                data-toggle="collapse" href="#collapseOpis" role="button" aria-expanded="false"
+                                aria-controls="collapseOpis">
                                 Info
                             </a>
                         </p>
-                            <div class="collapse p-3 rounded" id="collapseExample">
+                            <div class="collapse p-3 rounded" id="collapseOpis">
                             ' . $artikl_opis . '
                             </div>
                     </div>
