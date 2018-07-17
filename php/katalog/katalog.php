@@ -309,6 +309,7 @@ require_once '../header.php';
                     $artikl_naziv = $rowPodaci['artikl_naziv'];
                     $artikl_cena = $rowPodaci['artikl_cena'];
                     $artikl_opis = $rowPodaci['artikl_opis'];
+                }
                 
                     echo '</div>
                     <a class="carousel-control-prev" href="#' . $c . '" role="button" data-slide="prev">
@@ -337,7 +338,6 @@ require_once '../header.php';
                     </div>
                 </div>
             </div>';
-                }
 
                 $c++;
             }
