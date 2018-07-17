@@ -5,13 +5,13 @@ function getArtikl()
 {
     try {
         $pdo = Database::connect();
-        $query = $pdo->prepare("SELECT artikl_id, artikl_naziv FROM TechnoShop.Artikl ORDER BY artikl_naziv ASC;");
+        $query = $pdo->prepare("SELECT artikl_sifra, artikl_naziv FROM TechnoShop.Artikl ORDER BY artikl_naziv ASC;");
         $query->execute();
         Database::disconnect();
 
         while ($row = $query->fetch()) {
             echo '<option value="">Odaberite artikl</option>';
-            echo '<option value="' . $row['artikl_id'] . '">' . $row['artikl_naziv'] . '</option>';
+            echo '<option value="' . $row['artikl_sifra'] . '">' . $row['artikl_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
         echo $e->getMessage();
@@ -82,19 +82,18 @@ if (isset($_POST['unesi'])) {
         $kategorija = htmlspecialchars($_POST['katagorija']);
         $podkategorija = htmlspecialchars($_POST['podkategorija']);
         $proizvodjac = htmlspecialchars($_POST['proizvodjac']);
-        
-        if (isset(POST_['unesi'])) {
+
             try {
                 $pdo = Database::connect();
 
                 $query = $pdo->prepare(
                 'INSERT INTO
-                TechnoShop.Katalog  (artikl_id, kategorija_id, podkategorija_id, proizvodjac_id)
-            VALUES
-                (:artikl, :katagorija, :podkategorija, :proizvodjac);'
-            );
+                    TechnoShop.Katalog  (artikl_sifra, kategorija_id, podkategorija_id, proizvodjac_id)
+                VALUES
+                    (:artiklSifra, :katagorija, :podkategorija, :proizvodjac);'
+                );
 
-                $query->bindParam(':artikl', $artikl);
+                $query->bindParam(':artiklSifra', $artikl);
                 $query->bindParam(':katagorija', $kategorija);
                 $query->bindParam(':podkategorija', $podkategorija);
                 $query->bindParam(':proizvodjac', $proizvodjac);
@@ -107,7 +106,7 @@ if (isset($_POST['unesi'])) {
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        }
+
     } else {
         echo "<h1>Jedno od poljla nije podeseno</h1>";
     }
@@ -238,15 +237,15 @@ require_once '../header.php';
             //Prikaz kartica sa podacima o artiklima
             $pdo = Database::connect();
 
-            $queryArtikli = $pdo->prepare(
+            $queryArtikliKatalog = $pdo->prepare(
                 'SELECT * FROM TechnoShop.Katalog'
             );
 
-            $queryArtikli->execute();
+            $queryArtikliKatalog->execute();
 
             $c = 0;
 
-            while ($rowArtikli = $queryArtikli->fetch()) {
+            while ($rowArtikli = $queryArtikliKatalog->fetch()) {
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
 
