@@ -329,6 +329,7 @@ require_once '../header.php';
                         <h3 class="card-title">Naziv: ' . $artikl_naziv . '</h3>
                         <p class="card-title">Šifra: ' . $sifraArtikla . '</p>
                         <p class="card-title">Cena: ' . $artikl_cena . 'rsd</p>
+                        <p class="card-title">Opis: ' . $artikl_opis . '</p>
                         
                         <p>
                             <a class="btn btn-outline-info shadow"
@@ -338,7 +339,7 @@ require_once '../header.php';
                             </a>
                         </p>
                             <div class="collapse p-3 rounded" id="collapseOpis' . $c . '">
-                                <p class="card-title">Cena: ' . $artikl_opis . 'rsd</p>
+                                <p class="card-title">Opis: ' . $artikl_opis . '</p>
                             </div>
                     </div>
                 </div>
