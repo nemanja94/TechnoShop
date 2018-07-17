@@ -9,8 +9,9 @@ function getArtikl()
         $query->execute();
         Database::disconnect();
 
+        echo '<option value="">Odaberite artikl</option>';
+
         while ($row = $query->fetch()) {
-            echo '<option value="">Odaberite artikl</option>';
             echo '<option value="' . $row['artikl_sifra'] . '">' . $row['artikl_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
@@ -26,8 +27,9 @@ function getKategorije()
         $query->execute();
         Database::disconnect();
 
+        echo '<option value="">Odaberite kategoriju</option>';
+
         while ($row = $query->fetch()) {
-            echo '<option value="">Odaberite kategoriju</option>';
             echo '<option value="' . $row['kategorija_id'] . '">' . $row['kategorija_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
@@ -43,8 +45,9 @@ function getPodkategorije()
         $query->execute();
         Database::disconnect();
 
+        echo '<option value="">Odaberite podkategoriju</option>';
+
         while ($row = $query->fetch()) {
-            echo '<option value="">Odaberite podkategoriju</option>';
             echo '<option value="' . $row['podkategorija_id'] . '">' . $row['podkategorija_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
@@ -62,8 +65,9 @@ function getProizvodjac()
         $query->execute();
         Database::disconnect();
 
+        echo '<option value="">Odaberite proizvodjača</option>';
+
         while ($row = $query->fetch()) {
-            echo '<option value="">Odaberite proizvodjača</option>';
             echo '<option value="' . $row['proizvodjac_id'] . '">' . $row['proizvodjac_naziv'] . '</option>';
         }
     } catch (PDOException $e) {
@@ -83,30 +87,29 @@ if (isset($_POST['unesi'])) {
         $podkategorija = htmlspecialchars($_POST['podkategorija']);
         $proizvodjac = htmlspecialchars($_POST['proizvodjac']);
 
-            try {
-                $pdo = Database::connect();
+        try {
+            $pdo = Database::connect();
 
-                $query = $pdo->prepare(
+            $query = $pdo->prepare(
                 'INSERT INTO
                     TechnoShop.Katalog  (artikl_sifra, kategorija_id, podkategorija_id, proizvodjac_id)
                 VALUES
                     (:artiklSifra, :katagorija, :podkategorija, :proizvodjac);'
                 );
 
-                $query->bindParam(':artiklSifra', $artikl);
-                $query->bindParam(':katagorija', $kategorija);
-                $query->bindParam(':podkategorija', $podkategorija);
-                $query->bindParam(':proizvodjac', $proizvodjac);
+            $query->bindParam(':artiklSifra', $artikl);
+            $query->bindParam(':katagorija', $kategorija);
+            $query->bindParam(':podkategorija', $podkategorija);
+            $query->bindParam(':proizvodjac', $proizvodjac);
 
-                $query->execute();
+            $query->execute();
 
-                Database::disconnect();
+            Database::disconnect();
 
-                //header('Location: katalog.php');
-            } catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-
+            //header('Location: katalog.php');
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     } else {
         echo "<h1>Jedno od poljla nije podeseno</h1>";
     }
