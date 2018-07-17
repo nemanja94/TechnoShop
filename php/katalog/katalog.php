@@ -274,7 +274,7 @@ require_once '../header.php';
                     if ($brojac <= 0) {
                         echo '
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="' . $folder . '/' . $slika . '">
+                                <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
                             </div>';
                         $brojac++;
                     } else {
