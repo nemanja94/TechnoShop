@@ -141,7 +141,7 @@ require_once '../header.php';
                 <a href="../slike/unosSlika.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos
                     slika</a>
                 <a href="../katalog/katalog.php"
-                   class="nav-link btn btn-outline-warning text-secondary mr-1">Katalog</a>
+                   class="nav-link btn btn-outline-warning text-secondary mr-1 active">Katalog</a>
             </div>
         </div>
     </nav>
