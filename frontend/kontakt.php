@@ -16,13 +16,13 @@ include_once('../php/header.php');
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="../index.php">Početna</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Akcije</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="#">Katalog</a>
                 </li>
             </ul>
@@ -30,7 +30,6 @@ include_once('../php/header.php');
                 <li class="nav-item">
                     <a class="nav-link" href="frontend/kontakt.php">
                         Kontakt
-                        <span class="sr-only">(current)</span>
                     </a>
                 </li>
             </ul>
@@ -119,14 +118,15 @@ include_once('../php/header.php');
 
     </div>
     <!-- Radnje -->
+
+    <!-- Footer -->
+    <footer class="bg-dark p-3 text-center">
+        <p class="text-light mb-0">Copyright &copy; TechnoShop R&D 2018</p>
+    </footer>
+    <!-- Footer -->
+
 </div>
 <!-- Stranica -->
-
-<!-- Footer -->
-<footer class="bg-dark p-3 text-center">
-    <p class="text-light mb-0">Copyright &copy; TechnoShop R&D 2018</p>
-</footer>
-<!-- Footer -->
 
 <?php
 include_once('../php/footer.php');

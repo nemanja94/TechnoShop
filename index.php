@@ -3,7 +3,7 @@ include_once('php/header.php');
 ?>
 
 <!-- Jumbotron -->
-<div class="container mt-5 justify-content-center align-items-center">
+<div class="container mt-5 mx-0 justify-content-center align-items-center">
     <header>
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide border border-warning rounded shadow" data-ride="carousel">
@@ -66,9 +66,8 @@ include_once('php/header.php');
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="index.php">
                         Početna
-                        <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
