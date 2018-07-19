@@ -1,5 +1,5 @@
 <?php
-include_once('header.php');
+include_once('php/header.php');
 ?>
 
 <!-- Jumbotron -->
@@ -208,5 +208,5 @@ include_once('header.php');
 <!-- Stranica -->
 
 <?php
-include_once('footer.php');
+include_once('php/footer.php');
 ?>
