@@ -92,7 +92,7 @@ include_once('php/header.php');
         <!-- Prvi deo -->
 
         <!-- Kartice sa  -->
-        <div class="container mt-5">
+        <div class="container mt-5 col-md-7">
             <h2 class="text-dark text-center">Naše najbolje ponude</h2>
             <br />
             <div class="row">

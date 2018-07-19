@@ -28,7 +28,7 @@ include_once('../php/header.php');
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="frontend/kontakt.php">
+                    <a class="nav-link" href="kontakt.php">
                         Kontakt
                     </a>
                 </li>
