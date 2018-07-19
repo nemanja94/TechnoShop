@@ -22,12 +22,12 @@ include_once('../php/header.php');
                 <li class="nav-item">
                     <a class="nav-link" href="#">Akcije</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Katalog</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="frontend/kontakt.php">
                         Kontakt
                     </a>
