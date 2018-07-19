@@ -14,7 +14,8 @@ function getArtikl()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['artikl_sifra'] . '">' . $row['artikl_naziv'] . '</option>';
         }
-    } catch (PDOException $e) {
+    }
+    catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
@@ -32,7 +33,8 @@ function getKategorije()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['kategorija_id'] . '">' . $row['kategorija_naziv'] . '</option>';
         }
-    } catch (PDOException $e) {
+    }
+    catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
@@ -50,7 +52,8 @@ function getPodkategorije()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['podkategorija_id'] . '">' . $row['podkategorija_naziv'] . '</option>';
         }
-    } catch (PDOException $e) {
+    }
+    catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
@@ -71,7 +74,8 @@ function getProizvodjac()
         while ($row = $query->fetch()) {
             echo '<option value="' . $row['proizvodjac_id'] . '">' . $row['proizvodjac_naziv'] . '</option>';
         }
-    } catch (PDOException $e) {
+    }
+    catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
@@ -108,7 +112,8 @@ if (isset($_POST['unesi'])) {
             Database::disconnect();
 
             //header('Location: katalog.php');
-        } catch (PDOException $e) {
+        }
+        catch (PDOException $e) {
             echo $e->getMessage();
         }
     } else {
@@ -119,203 +124,219 @@ if (isset($_POST['unesi'])) {
 require_once '../header.php';
 ?>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="../index.php"><span class="text-danger">Techno</span> <span>Shop</span></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav p-1 m-1">
-                <a href="../index.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Početna strana</a>
-                <a href="../artikli/unosArtikl.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos
-                    artikala<span class="sr-only">(current)</span></a>
-                <a href="../kategorije/unosKategorija.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos
-                    kategorija</a>
-                <a href="../podkategorije/unosPodkategorija.php"
-                   class="nav-link btn btn-outline-warning text-secondary mr-1">Unos podkategorija</a>
-                <a href="../proizvodjac/unosProizvodjac.php"
-                   class="nav-link btn btn-outline-warning text-secondary mr-1">Unos
-                    proizvođača</a>
-                <a href="../slike/unosSlika.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Unos
-                    slika</a>
-                <a href="../katalog/katalog.php"
-                   class="nav-link btn btn-outline-warning text-secondary mr-1 active">Katalog</a>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar -->
-
-
-    <!-- Opis stranice -->
-    <br>
-    <br>
-    <div class="container">
-        <h3>
-            Forma za uredjivanje kataloga
-            <small>
-                Ovde možete uneti nove ili izbirsati postojeće artikle iz kataloga.
-            </small>
-        </h3>
-    </div>
-    <br>
-    <hr>
-    <br>
-    <!-- Opis stranice -->
-
-    <!--Forma za unos artikala-->
-    <div class="container col-lg-7 col-md-7 text-center bg-dark pb-3 rounded">
-        <p>
-            <a class="btn btn-primary shadow"
-               data-toggle="collapse" href="#collapseForma" role="button" aria-expanded="false"
-               aria-controls="collapseForma">
-                Forma za unos artikala
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="../index.php">
+        <span class="text-danger">Techno</span>
+        <span>Shop</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav p-1 m-1">
+            <a href="../index.php" class="nav-link btn btn-outline-warning text-secondary mr-1">Početna strana</a>
+            <a href="../artikli/unosArtikl.php" class="nav-link btn btn-outline-warning text-secondary mr-1">
+                Unos
+                    artikala
+                <span class="sr-only">(current)</span>
             </a>
-        </p>
-        <div class="collapse p-3 rounded" id="collapseForma">
-            <form action="katalog.php" method="post" enctype="multipart/form-data">
-
-                <hr>
-
-                <div class="control-group">
-                    <div class="controls">
-                        <!-- <label class="text-light text">Odaberite artikl</label> -->
-                        <select name="artikl" class="form-control">
-                            <?php getArtikl(); ?>
-                        </select>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="control-group">
-                    <div class="controls">
-                        <!-- <label class="text-light text">Odaberite kategoriju</label> -->
-                        <select name="katagorija" class="form-control">
-                            <?php getKategorije(); ?>
-                        </select>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="control-group">
-                    <div class="controls">
-                        <!-- <label class="text-light text">Odaberite podkategoriju</label> -->
-                        <select name="podkategorija" class="form-control">
-                            <?php getPodkategorije(); ?>
-                        </select>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="control-group">
-                    <div class="controls">
-                        <!-- <label class="text-light text">Odaberite proizvodjaca</label> -->
-                        <select name="proizvodjac" class="form-control">
-                            <?php getProizvodjac(); ?>
-                        </select>
-                    </div>
-                </div>
-
-                <hr>
-
-                <button type="submit" name="unesi" class="btn btn-success">Unesi</button>
-            </form>
+            <a href="../kategorije/unosKategorija.php" class="nav-link btn btn-outline-warning text-secondary mr-1">
+                Unos
+                    kategorija
+            </a>
+            <a href="../podkategorije/unosPodkategorija.php"
+                class="nav-link btn btn-outline-warning text-secondary mr-1">
+                Unos podkategorija
+            </a>
+            <a href="../proizvodjac/unosProizvodjac.php"
+                class="nav-link btn btn-outline-warning text-secondary mr-1">
+                Unos
+                    proizvođača
+            </a>
+            <a href="../slike/unosSlika.php" class="nav-link btn btn-outline-warning text-secondary mr-1">
+                Unos
+                    slika
+            </a>
+            <a href="../katalog/katalog.php"
+                class="nav-link btn btn-outline-warning text-secondary mr-1 active">
+                Katalog
+            </a>
         </div>
     </div>
-    <!--Forma za unos artikala-->
+</nav>
+<!-- Navbar -->
 
-    <br>
-    <hr>
-    <br>
 
-    <!-- Kartice koje prikazuju artikla i omogućuju unos slika za odabrani artikl -->
-    <div class="container col-lg-8">
-        <div class="row">
+<!-- Opis stranice -->
+<br />
+<br />
+<div class="container">
+    <h3>
+        Forma za uredjivanje kataloga
+        <small>
+            Ovde možete uneti nove ili izbirsati postojeće artikle iz kataloga.
+        </small>
+    </h3>
+</div>
+<br />
+<hr />
+<br />
+<!-- Opis stranice -->
 
-            <?php
+<!--Forma za unos artikala-->
+<div class="container col-lg-7 col-md-7 text-center bg-dark pb-3 rounded">
+    <p>
+        <a class="btn btn-primary shadow"
+            data-toggle="collapse" href="#collapseForma" role="button" aria-expanded="false"
+            aria-controls="collapseForma">
+            Forma za unos artikala
+        </a>
+    </p>
+    <div class="collapse p-3 rounded" id="collapseForma">
+        <form action="katalog.php" method="post" enctype="multipart/form-data">
 
-            try {
+            <hr />
 
-                //Prikaz kartica sa podacima o artiklima
-                $pdo = Database::connect();
+            <div class="control-group">
+                <div class="controls">
+                    <!-- <label class="text-light text">Odaberite artikl</label> -->
+                    <select name="artikl" class="form-control">
+                        <?php getArtikl(); ?>
+                    </select>
+                </div>
+            </div>
 
-                $queryArtikliKatalog = $pdo->prepare(
-                    'SELECT artikl_sifra, kategorija_id, podkategorija_id, proizvodjac_id FROM TechnoShop.Katalog'
-                );
+            <hr />
 
-                $queryArtikliKatalog->execute();
+            <div class="control-group">
+                <div class="controls">
+                    <!-- <label class="text-light text">Odaberite kategoriju</label> -->
+                    <select name="katagorija" class="form-control">
+                        <?php getKategorije(); ?>
+                    </select>
+                </div>
+            </div>
 
-                $c = 0;
+            <hr />
 
-                while ($rowArtikliKatalog = $queryArtikliKatalog->fetch()) {
+            <div class="control-group">
+                <div class="controls">
+                    <!-- <label class="text-light text">Odaberite podkategoriju</label> -->
+                    <select name="podkategorija" class="form-control">
+                        <?php getPodkategorije(); ?>
+                    </select>
+                </div>
+            </div>
 
-                    $sifraArtikla = $rowArtikliKatalog['artikl_sifra'];
-                    $kategorija_id = $rowArtikliKatalog['kategorija_id'];
-                    $podkategorija_id = $rowArtikliKatalog['podkategorija_id'];
-                    $proizvodjac_id = $rowArtikliKatalog['proizvodjac_id'];
+            <hr />
 
-                    echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
+            <div class="control-group">
+                <div class="controls">
+                    <!-- <label class="text-light text">Odaberite proizvodjaca</label> -->
+                    <select name="proizvodjac" class="form-control">
+                        <?php getProizvodjac(); ?>
+                    </select>
+                </div>
+            </div>
+
+            <hr />
+
+            <button type="submit" name="unesi" class="btn btn-success">Unesi</button>
+        </form>
+    </div>
+</div>
+<!--Forma za unos artikala-->
+
+<br />
+<hr />
+<br />
+
+<!-- Kartice koje prikazuju artikla i omogućuju unos slika za odabrani artikl -->
+<div class="container col-lg-8">
+    <div class="row">
+
+        <?php
+
+        try {
+
+            //Prikaz kartica sa podacima o artiklima
+            $pdo = Database::connect();
+
+            $queryArtikliKatalog = $pdo->prepare(
+                'SELECT artikl_sifra, kategorija_id, podkategorija_id, proizvodjac_id FROM TechnoShop.Katalog'
+            );
+
+            $queryArtikliKatalog->execute();
+
+            $c = 0;
+
+            while ($rowArtikliKatalog = $queryArtikliKatalog->fetch()) {
+
+                $sifraArtikla = $rowArtikliKatalog['artikl_sifra'];
+                $kategorija_id = $rowArtikliKatalog['kategorija_id'];
+                $podkategorija_id = $rowArtikliKatalog['podkategorija_id'];
+                $proizvodjac_id = $rowArtikliKatalog['proizvodjac_id'];
+
+                echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                         <div class="card text-white bg-dark" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">';
 
-                    //Prikaz slika u carusel-u
-                    $querySlike = $pdo->prepare(
-                        'SELECT * FROM TechnoShop.Slike WHERE artikl_sifra = :sifraArtikla;'
-                    );
+                //Prikaz slika u carusel-u
+                $querySlike = $pdo->prepare(
+                    'SELECT * FROM TechnoShop.Slike WHERE artikl_sifra = :sifraArtikla;'
+                );
 
-                    $querySlike->bindParam('sifraArtikla', $sifraArtikla);
+                $querySlike->bindParam('sifraArtikla', $sifraArtikla);
 
-                    $querySlike->execute();
+                $querySlike->execute();
 
-                    echo '
+                echo '
                     <div id="' . $c . '" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">';
 
-                    $brojac = 0;
+                $brojac = 0;
 
-                    while ($rowSlike = $querySlike->fetch()) {
-                        $folder = htmlspecialchars($rowSlike['artikl_sifra']);
-                        $slika = htmlspecialchars($rowSlike['slika']);
+                while ($rowSlike = $querySlike->fetch()) {
+                    $folder = htmlspecialchars($rowSlike['artikl_sifra']);
+                    $slika = htmlspecialchars($rowSlike['slika']);
 
-                        if ($brojac <= 0) {
-                            echo '
+                    if ($brojac <= 0) {
+                        echo '
                             <div class="carousel-item active">
                                 <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
                             </div>';
-                            $brojac++;
-                        } else {
-                            echo '
+                        $brojac++;
+                    } else {
+                        echo '
                             <div class="carousel-item">
                                 <img class="d-block w-100" src="../slike/' . $folder . '/' . $slika . '">
                             </div>';
-                            $brojac++;
-                        }
+                        $brojac++;
                     }
-                    //Prikaz slika u carusel-u
+                }
+                //Prikaz slika u carusel-u
 
-                    //Prikaz info u telu kartice
-                    $queryArtiklPodaci = $pdo->prepare("SELECT artikl_naziv, artikl_cena, artikl_opis
+                //Prikaz info u telu kartice
+                $queryArtiklPodaci = $pdo->prepare("SELECT artikl_naziv, artikl_cena, artikl_opis
                                                  FROM TechnoShop.Artikl
                                                  WHERE Artikl.artikl_sifra = :sifraArtikla");
 
-                    $queryArtiklPodaci->bindParam('sifraArtikla', $sifraArtikla);
+                $queryArtiklPodaci->bindParam('sifraArtikla', $sifraArtikla);
 
-                    $queryArtiklPodaci->execute();
+                $queryArtiklPodaci->execute();
 
-                    $artikl_naziv = "";
-                    $artikl_cena = "";
-                    $artikl_opis = "";
+                $artikl_naziv = "";
+                $artikl_cena = "";
+                $artikl_opis = "";
 
-                    while ($rowPodaci = $queryArtiklPodaci->fetch()) {
-                        $artikl_naziv = $rowPodaci['artikl_naziv'];
-                        $artikl_cena = $rowPodaci['artikl_cena'];
-                        $artikl_opis = $rowPodaci['artikl_opis'];
-                    }
+                while ($rowPodaci = $queryArtiklPodaci->fetch()) {
+                    $artikl_naziv = $rowPodaci['artikl_naziv'];
+                    $artikl_cena = $rowPodaci['artikl_cena'];
+                    $artikl_opis = $rowPodaci['artikl_opis'];
+                }
 
-                    echo '</div>
+                echo '</div>
                     <a class="carousel-control-prev" href="#' . $c . '" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -329,7 +350,7 @@ require_once '../header.php';
                         <h3 class="card-title">Naziv: ' . $artikl_naziv . '</h3>
                         <p class="card-title">Šifra: ' . $sifraArtikla . '</p>
                         <p class="card-title">Cena: ' . $artikl_cena . 'rsd</p>
-                        
+
                         <p>
                             <a class="btn btn-outline-info shadow"
                                 data-toggle="collapse" href="#collapseOpis' . $c . '" role="button" aria-expanded="false"
@@ -344,22 +365,23 @@ require_once '../header.php';
                 </div>
             </div>';
 
-                    $c++;
-                }
-
-
-                // <p class="card-title">Opis: ' . $rowArtikliKatalog['artikl_opis'] . '</p>
-
-                Database::disconnect();
-                //Prikaz kartica sa podacima o artiklima
-            } catch (PDOException $e) {
-                echo $e->getMessage();
+                $c++;
             }
 
-            ?>
-        </div>
+
+            // <p class="card-title">Opis: ' . $rowArtikliKatalog['artikl_opis'] . '</p>
+
+            Database::disconnect();
+            //Prikaz kartica sa podacima o artiklima
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        ?>
     </div>
-    <!-- Kartice koje prikazuju kategorije -->
+</div>
+<!-- Kartice koje prikazuju kategorije -->
 <?php
 require_once '../footer.php';
 ?>

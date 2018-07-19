@@ -19,7 +19,8 @@ try {
     $nm = $query->rowCount();
 
     echo $nm;
-} catch (PDOException $e) {
+}
+catch (PDOException $e) {
     echo $e->getMessage();
 }
 
