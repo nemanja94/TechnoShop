@@ -1,21 +1,5 @@
 ﻿<?php
 
-require '../baza/Database.php';
-
-try {
-    $pdo = Database::connect();
-
-    $query = $pdo->prepare(
-        'SELECT * FROM TechnoShop.Usluge'
-    );
-
-    $query->execute();
-}
-catch (PDOException $e) {
-    echo $e->getMessage();
-
-}
-
 $strana = " - Usluge";
 include_once('../header.php');
 
@@ -63,15 +47,29 @@ include_once('../header.php');
 
             <?php
 
+            require '../php/baza/Database.php';
+
+            try {
+                $pdo = Database::connect();
+
+                $query = $pdo->prepare(
+                    'SELECT * FROM TechnoShop.Usluge'
+                );
+
+                $query->execute();
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+
+            }
+
             while ($row = $query->fetch()) {
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
                 <div class="card text-white bg-dark" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
                     <div class="card-body">
                         <h5 class="card-title">' . $row['usluga_naziv'] . '</h5>
                         <hr class="bg-secondary">
-                        <a href="ukloniKategoriju.php?id=' . $row['usluga_cena'] . '">
-                            <button class="btn btn-danger">Ukloni kategoriju</button>
-                        </a>
+                        <p class="card-text">' . $row['usluga_cena'] . '</a>
                     </div>
                 </div>
             </div>';
@@ -80,6 +78,7 @@ include_once('../header.php');
             Database::disconnect();
 
             ?>
+
         </div>
     </div>
     <!-- Kartice koje prikazuju usluge -->
