@@ -2,6 +2,19 @@
 
 require '../baza/Database.php';
 
+try {
+    $pdo = Database::connect();
+
+    $query = $pdo->prepare(
+        'SELECT * FROM TechnoShop.Usluge'
+    );
+
+    $query->execute();
+}
+catch (PDOException $e) {
+    echo $e->getMessage();
+
+}
 
 $strana = " - Usluge";
 include_once('../header.php');
@@ -63,6 +76,8 @@ include_once('../header.php');
                 </div>
             </div>';
             }
+
+            Database::disconnect();
 
             ?>
         </div>
