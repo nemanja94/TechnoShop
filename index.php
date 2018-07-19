@@ -3,7 +3,7 @@ include_once('php/header.php');
 ?>
 
 <!-- Jumbotron -->
-<div class="container mt-5 mx-0 justify-content-center align-items-center">
+<div class="container mt-5 justify-content-center align-items-center">
     <header>
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide border border-warning rounded shadow" data-ride="carousel">
@@ -14,21 +14,21 @@ include_once('php/header.php');
                 </ol>
                 <div class="carousel-inner rounded shadow">
                     <div class="carousel-item active">
-                        <img class="d-block w-100 rounded " src="../slike/3.svg" alt="First slide" />
+                        <img class="d-block w-100 rounded " src="frontend/jumbotron_slike/3.svg" alt="First slide" />
                         <div class="carousel-caption d-none d-md-block">
                             <h5>800 x 400</h5>
                             <p>Prvi slajd - Mesto za reklamu ili neki proizvod na akciji</p>
                         </div>
                     </div>
                     <div class="carousel-item shadow">
-                        <img class="d-block w-100 rounded" src="../slike/2.svg" alt="Second slide" />
+                        <img class="d-block w-100 rounded" src="frontend/jumbotron_slike/2.svg" alt="Second slide" />
                         <div class="carousel-caption d-none d-md-block">
                             <h5>800 x 400</h5>
                             <p>Drugi slajd - Mesto za reklamu ili neki proizvod na akciji</p>
                         </div>
                     </div>
                     <div class="carousel-item shadow">
-                        <img class="d-block w-100 rounded" src="../slike/11.svg" alt="Third slide" />
+                        <img class="d-block w-100 rounded" src="frontend/jumbotron_slike/11.svg" alt="Third slide" />
                         <div class="carousel-caption d-none d-md-block">
                             <h5>800 x 400</h5>
                             <p>Treći slajd - Mesto za reklamu ili neki proizvod na akciji</p>
@@ -98,7 +98,7 @@ include_once('php/header.php');
             <div class="row">
                 <div class="col-sm-4 text-center my-3">
                     <div class="card text-light bg-warning" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">
-                        <img class="card-img-top rounded rounded rounded rounded rounded" src="../slike/kartice - orvi deo.svg" alt="Card image cap" />
+                        <img class="card-img-top rounded rounded rounded rounded rounded" src="frontend/jumbotron_slike/kartice - orvi deo.svg" alt="Card image cap" />
                         <div class="card-body">
                             <h5 class="card-title">Kartice sa istaknutim ponudama</h5>
                             <p class="card-text">Kartica sa opisom ponuda</p>
@@ -113,7 +113,7 @@ include_once('php/header.php');
 
                 <div class="col-sm-4 text-center my-3">
                     <div class="card text-light bg-warning" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">
-                        <img class="card-img-top rounded rounded rounded rounded rounded" src="../slike/kartice - orvi deo.svg" alt="Card image cap" />
+                        <img class="card-img-top rounded rounded rounded rounded rounded" src="frontend/jumbotron_slike/kartice - orvi deo.svg" alt="Card image cap" />
                         <div class="card-body">
                             <h5 class="card-title">Kartice sa istaknutim ponudama</h5>
                             <p class="card-text">Kartica sa opisom ponuda</p>
@@ -128,7 +128,7 @@ include_once('php/header.php');
 
                 <div class="col-sm-4 text-center my-3">
                     <div class="card text-light bg-warning" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">
-                        <img class="card-img-top rounded rounded rounded rounded rounded" src="../slike/kartice - orvi deo.svg" alt="Card image cap" />
+                        <img class="card-img-top rounded rounded rounded rounded rounded" src="frontend/jumbotron_slike/kartice - orvi deo.svg" alt="Card image cap" />
                         <div class="card-body">
                             <h5 class="card-title">Kartice sa istaknutim ponudama</h5>
                             <p class="card-text">Kartica sa opisom ponuda</p>
@@ -155,7 +155,7 @@ include_once('php/header.php');
             <h2 class="text-dark">Naša tri najbolja apartmana</h2>
             <br />
             <a href="#">
-                <img class="rounded shadow img-fluid" src="../slike/3.svg" />
+                <img class="rounded shadow img-fluid" src="frontend/jumbotron_slike/3.svg" />
             </a>
             <br />
             <a href="#" class="btn btn-warning" style="margin-top: -80px;">Otvori stranicu</a>
@@ -165,7 +165,7 @@ include_once('php/header.php');
                 <div class="row mb-5">
                     <div class="col-sm-6 text-center my-3">
                         <div class="card text-light bg-warning" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">
-                            <img class="card-img-top rounded rounded rounded rounded rounded" src="../slike/kartice - orvi deo.svg" alt="Card image cap" />
+                            <img class="card-img-top rounded rounded rounded rounded rounded" src="frontend/jumbotron_slike/kartice - orvi deo.svg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Kartice sa istaknutim apartmanima</h5>
                                 <p class="card-text">Kartica sa opisom apartmanima</p>
@@ -180,7 +180,7 @@ include_once('php/header.php');
 
                     <div class="col-sm-6 text-center my-3">
                         <div class="card text-light bg-warning" style="box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.30);">
-                            <img class="card-img-top rounded rounded rounded rounded rounded" src="../slike/kartice - orvi deo.svg" alt="Card image cap" />
+                            <img class="card-img-top rounded rounded rounded rounded rounded" src="frontend/jumbotron_slike/kartice - orvi deo.svg" alt="Card image cap" />
                             <div class="card-body">
                                 <h5 class="card-title">Kartice sa istaknutim apartmanima</h5>
                                 <p class="card-text">Kartica sa opisom apartmanima</p>
