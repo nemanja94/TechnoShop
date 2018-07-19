@@ -1,4 +1,5 @@
-﻿<?php
+<?php
+$strana = " - Kontatk";
 include_once('../php/header.php');
 ?>
 
@@ -20,10 +21,10 @@ include_once('../php/header.php');
                     <a class="nav-link" href="../index.php">Početna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Akcije</a>
+                    <a class="nav-link" href="usluge.php">Usluge</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Katalog</a>
+                    <a class="nav-link" href="katalog.php">Katalog</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\frontend",
-    "\\frontend\\jumbotron_slike",
     "\\php",
     "\\php\\kategorije"
   ],
-  "SelectedNode": "\\php\\footer.php",
+  "SelectedNode": "\\frontend\\kontakt.php",
   "PreviewInSolutionExplorer": false
 }

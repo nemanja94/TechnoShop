@@ -72,7 +72,7 @@ include_once('php/header.php');
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Akcije</a>
+                    <a class="nav-link" href="frontend/usluge.php">Usluge</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Katalog</a>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 15, 2018 at 11:18 AM
--- Server version: 5.7.22-log
--- PHP Version: 7.2.6
+-- Host: localhost
+-- Generation Time: Jul 19, 2018 at 09:03 PM
+-- Server version: 5.7.22
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,19 +19,19 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `technoshop`
+-- Database: `TechnoShop`
 --
-CREATE DATABASE IF NOT EXISTS `technoshop` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `technoshop`;
+CREATE DATABASE IF NOT EXISTS `TechnoShop` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `TechnoShop`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikl`
+-- Table structure for table `Artikl`
 --
 
-DROP TABLE IF EXISTS `artikl`;
-CREATE TABLE IF NOT EXISTS `artikl` (
+DROP TABLE IF EXISTS `Artikl`;
+CREATE TABLE IF NOT EXISTS `Artikl` (
   `artikl_id` int(11) NOT NULL AUTO_INCREMENT,
   `artikl_naziv` varchar(255) DEFAULT NULL,
   `artikl_opis` varchar(255) DEFAULT NULL,
@@ -43,13 +43,13 @@ CREATE TABLE IF NOT EXISTS `artikl` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4910 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `artikl`
+-- Dumping data for table `Artikl`
 --
 
-INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
-(1, 'BUBANJ LEXMARKE220', NULL, '15', 1000),
+INSERT INTO `Artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
+(1, 'BUBANJ LEXMARKE220', 'Drajv', '15', 1000),
 (2, 'PUNJENJE LEXMARK E220', NULL, '16', 2006),
-(3, 'BUBANJ  HP 12A', NULL, '17', 500),
+(3, 'BUBANJ  HP 12A', 'Nekakav opis', '17', 500),
 (4, 'BUBANJ SAMSUNG 104', NULL, '18', 900),
 (5, 'BUBANJ HP 05A', NULL, '20', 800),
 (6, 'BUBANJ HP 85A', NULL, '30', 600),
@@ -1027,7 +1027,7 @@ INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`
 (978, 'KABL MREZNI SA PREK EU', NULL, '1056', 350),
 (979, 'INTEX 8738-6CH', NULL, '1057', 1000),
 (980, 'KABL NAP SUKO UTIK', NULL, '1058', 400);
-INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
+INSERT INTO `Artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
 (981, 'TORBICA ZA FOTOAPARAT MS CAM-02', NULL, '1059', 750),
 (982, 'MASTER COLOR CB540A', NULL, '1060', 2600),
 (983, 'MIS MS MATRIX CRVENI', NULL, '1061', 600),
@@ -1949,7 +1949,7 @@ INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`
 (1899, 'KULER LC-CC100', NULL, '1984', 2900),
 (1900, 'CARD READER HAMA ALL IN 1 94124', NULL, '1985', 950),
 (1901, 'TONER CL ZA HPC3906A', NULL, '1986', 1700);
-INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
+INSERT INTO `Artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
 (1902, 'SLUSALICE HAMA HK3031 ', NULL, '1987', 1150),
 (1903, 'SLUSALICE HAMA JOY', NULL, '1988', 2200),
 (1904, 'MIS A4TECH X-710BK', NULL, '1989', 2300),
@@ -2853,7 +2853,7 @@ INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`
 (2802, 'KBD+TORBA TABLET 9', NULL, '2892', 1750),
 (2803, 'KABL MIKRO  B/C 1M', NULL, '2893', 500),
 (2804, 'ASUS X551MAV-SX363B', NULL, '2894', 30990);
-INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
+INSERT INTO `Artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
 (2805, 'USB FLASH TRANSCEND JF310 8GB', NULL, '2895', 950),
 (2806, 'PIONEER MVH-170UB', NULL, '2896', 7490),
 (2807, 'ZV INTEX 4650ELEG 5.1', NULL, '2898', 8900),
@@ -3748,7 +3748,7 @@ INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`
 (3696, 'DINAMICKI MIKROFON SAL M61', NULL, '3790', 700),
 (3697, 'BNC UTIKAC NA NAVRTANJE 75R(RG6)', NULL, '3791', 130),
 (3698, 'GRESKA', NULL, '3792', 0);
-INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
+INSERT INTO `Artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
 (3699, 'ADAPTER SKART UTIKAC -3XCINC+SKART UTICNICA', NULL, '3793', 450),
 (3700, 'KULER ZA CPU TOSHIBA M50D-A-10W', NULL, '3794', 3000),
 (3701, 'ZASTITA ZA KBD ASUS', NULL, '3795', 550),
@@ -4638,7 +4638,7 @@ INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`
 (4585, 'MIS MARVO M314 GAMING', NULL, '4681', 1800),
 (4586, 'MIS MARVO M110 GAMING', NULL, '4682', 1200),
 (4587, 'ADAPTER DVI NA VGA M/F N-DVI/VGA', NULL, '4683', 1300);
-INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
+INSERT INTO `Artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`, `artikl_cena`) VALUES
 (4588, 'RACUNAR X4 840/8GB/1TB/GF1050 2GB DDR5+POKLON KBD I MIS', NULL, '4684', 49900),
 (4589, 'RAC.ZEUS I3-7100/4GB/1TB/DVDRW', NULL, '4685', 39900),
 (4590, 'NB ACER A315-31-C6FN ', NULL, '4686', 33990),
@@ -4965,31 +4965,39 @@ INSERT INTO `artikl` (`artikl_id`, `artikl_naziv`, `artikl_opis`, `artikl_sifra`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `katalog`
+-- Table structure for table `Katalog`
 --
 
-DROP TABLE IF EXISTS `katalog`;
-CREATE TABLE IF NOT EXISTS `katalog` (
+DROP TABLE IF EXISTS `Katalog`;
+CREATE TABLE IF NOT EXISTS `Katalog` (
   `katalog_id` int(11) NOT NULL AUTO_INCREMENT,
-  `artikl_id` int(11) NOT NULL,
+  `artikl_sifra` int(11) NOT NULL,
   `kategorija_id` int(11) NOT NULL,
   `podkategorija_id` int(11) NOT NULL,
   `proizvodjac_id` int(11) NOT NULL,
   PRIMARY KEY (`katalog_id`),
-  KEY `artikl_id` (`artikl_id`,`kategorija_id`,`podkategorija_id`,`proizvodjac_id`),
+  KEY `artikl_id` (`artikl_sifra`,`kategorija_id`,`podkategorija_id`,`proizvodjac_id`),
   KEY `katalog_ibfk_2` (`kategorija_id`),
   KEY `katalog_ibfk_3` (`proizvodjac_id`),
   KEY `katalog_ibfk_4` (`podkategorija_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Katalog`
+--
+
+INSERT INTO `Katalog` (`katalog_id`, `artikl_sifra`, `kategorija_id`, `podkategorija_id`, `proizvodjac_id`) VALUES
+(1, 17, 17, 10, 1),
+(2, 18, 33, 65, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategorije`
+-- Table structure for table `Kategorije`
 --
 
-DROP TABLE IF EXISTS `kategorije`;
-CREATE TABLE IF NOT EXISTS `kategorije` (
+DROP TABLE IF EXISTS `Kategorije`;
+CREATE TABLE IF NOT EXISTS `Kategorije` (
   `kategorija_id` int(11) NOT NULL AUTO_INCREMENT,
   `kategorija_naziv` varchar(128) NOT NULL,
   PRIMARY KEY (`kategorija_id`),
@@ -4997,10 +5005,10 @@ CREATE TABLE IF NOT EXISTS `kategorije` (
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `kategorije`
+-- Dumping data for table `Kategorije`
 --
 
-INSERT INTO `kategorije` (`kategorija_id`, `kategorija_naziv`) VALUES
+INSERT INTO `Kategorije` (`kategorija_id`, `kategorija_naziv`) VALUES
 (16, 'Gotove Konfiguracije'),
 (17, 'Hard Diskovi'),
 (19, 'Mediji'),
@@ -5024,11 +5032,11 @@ INSERT INTO `kategorije` (`kategorija_id`, `kategorija_naziv`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `podkategorija`
+-- Table structure for table `Podkategorija`
 --
 
-DROP TABLE IF EXISTS `podkategorija`;
-CREATE TABLE IF NOT EXISTS `podkategorija` (
+DROP TABLE IF EXISTS `Podkategorija`;
+CREATE TABLE IF NOT EXISTS `Podkategorija` (
   `podkategorija_id` int(11) NOT NULL AUTO_INCREMENT,
   `podkategorija_naziv` varchar(45) NOT NULL,
   PRIMARY KEY (`podkategorija_id`),
@@ -5036,10 +5044,10 @@ CREATE TABLE IF NOT EXISTS `podkategorija` (
 ) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `podkategorija`
+-- Dumping data for table `Podkategorija`
 --
 
-INSERT INTO `podkategorija` (`podkategorija_id`, `podkategorija_naziv`) VALUES
+INSERT INTO `Podkategorija` (`podkategorija_id`, `podkategorija_naziv`) VALUES
 (6, 'Eksterni hard diskovi'),
 (7, 'HDD Rack'),
 (8, 'SSD'),
@@ -5129,25 +5137,32 @@ INSERT INTO `podkategorija` (`podkategorija_id`, `podkategorija_naziv`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proizvodjac`
+-- Table structure for table `Proizvodjac`
 --
 
-DROP TABLE IF EXISTS `proizvodjac`;
-CREATE TABLE IF NOT EXISTS `proizvodjac` (
+DROP TABLE IF EXISTS `Proizvodjac`;
+CREATE TABLE IF NOT EXISTS `Proizvodjac` (
   `proizvodjac_id` int(11) NOT NULL AUTO_INCREMENT,
   `proizvodjac_naziv` varchar(128) NOT NULL,
   PRIMARY KEY (`proizvodjac_id`),
   UNIQUE KEY `proizvodjac_id_UNIQUE` (`proizvodjac_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Proizvodjac`
+--
+
+INSERT INTO `Proizvodjac` (`proizvodjac_id`, `proizvodjac_naziv`) VALUES
+(1, 'Nokia');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slike`
+-- Table structure for table `Slike`
 --
 
-DROP TABLE IF EXISTS `slike`;
-CREATE TABLE IF NOT EXISTS `slike` (
+DROP TABLE IF EXISTS `Slike`;
+CREATE TABLE IF NOT EXISTS `Slike` (
   `slika_id` int(11) NOT NULL AUTO_INCREMENT,
   `artikl_sifra` varchar(255) NOT NULL,
   `slika` varchar(255) NOT NULL,
@@ -5156,26 +5171,36 @@ CREATE TABLE IF NOT EXISTS `slike` (
   KEY `fk_artikl_sifra_idx` (`artikl_sifra`),
   KEY `artikl_sifra` (`artikl_sifra`),
   KEY `fk_artikl_sifra_index` (`artikl_sifra`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
--- Constraints for dumped tables
+-- Dumping data for table `Slike`
 --
 
---
--- Constraints for table `katalog`
---
-ALTER TABLE `katalog`
-  ADD CONSTRAINT `katalog_ibfk_1` FOREIGN KEY (`artikl_id`) REFERENCES `artikl` (`artikl_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `katalog_ibfk_2` FOREIGN KEY (`kategorija_id`) REFERENCES `kategorije` (`kategorija_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `katalog_ibfk_3` FOREIGN KEY (`proizvodjac_id`) REFERENCES `proizvodjac` (`proizvodjac_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `katalog_ibfk_4` FOREIGN KEY (`podkategorija_id`) REFERENCES `podkategorija` (`podkategorija_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+INSERT INTO `Slike` (`slika_id`, `artikl_sifra`, `slika`) VALUES
+(1, '15', '15-5b4b51ed81eac7.08563855.jpg'),
+(2, '15', '15-5b4b51fceb3c73.88793434.jpg'),
+(3, '15', '15-5b4b520933f249.01364777.jpg'),
+(4, '16', '16-5b4de4de6e99c3.83895381.jpg'),
+(5, '17', '17-5b4dfa89684617.96927112.jpg'),
+(6, '17', '17-5b4dfa89684617.96927112.jpg'),
+(7, '18', '18-5b4e045b145898.53043002.jpg'),
+(8, '18', '18-5b4e046a7aaaf3.96026457.jpg');
+
+-- --------------------------------------------------------
 
 --
--- Constraints for table `slike`
+-- Table structure for table `Usluge`
 --
-ALTER TABLE `slike`
-  ADD CONSTRAINT `slike_ibfk_1` FOREIGN KEY (`artikl_sifra`) REFERENCES `artikl` (`artikl_sifra`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DROP TABLE IF EXISTS `Usluge`;
+CREATE TABLE IF NOT EXISTS `Usluge` (
+  `usluga_id` int(11) NOT NULL AUTO_INCREMENT,
+  `usluga_sifra` varchar(32) NOT NULL,
+  `usluga_naziv` varchar(255) NOT NULL,
+  `usluga_cena` double NOT NULL,
+  PRIMARY KEY (`usluga_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
