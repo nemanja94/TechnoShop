@@ -83,6 +83,12 @@ include_once('../php/header.php');
     </div>
     <!-- Kartice koje prikazuju usluge -->
 
+    <!-- Footer -->
+    <footer class="bg-dark p-3 text-center rounded-top">
+        <p class="text-light mb-0">Copyright &copy; TechnoShop R&D 2018</p>
+    </footer>
+    <!-- Footer -->
+
     <!-- Stranica -->
 </div>
 
