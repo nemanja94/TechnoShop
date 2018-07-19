@@ -1,4 +1,5 @@
 <?php
+$strana = " - Početna";
 include_once('php/header.php');
 ?>
 
