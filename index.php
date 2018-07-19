@@ -198,7 +198,7 @@ include_once('php/header.php');
     <!-- Sadrzaj stranice -->
 
     <!-- Footer -->
-    <footer class="bg-dark p-3 text-center" style="bottom: 0; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+    <footer class="bg-dark p-3 text-center rounded-top">
         <p class="text-light mb-0">Copyright &copy; TechnoShop R&D 2018</p>
     </footer>
     <!-- Footer -->
