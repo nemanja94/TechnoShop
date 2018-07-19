@@ -80,7 +80,7 @@ include_once('php/header.php');
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="kontakt.html">Kontakt</a>
+                    <a class="nav-link" href="frontend/kontakt.html">Kontakt</a>
                 </li>
             </ul>
         </div>
