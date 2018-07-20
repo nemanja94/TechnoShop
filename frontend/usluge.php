@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 $strana = " - Usluge";
 include_once('../php/header.php');
@@ -20,20 +20,20 @@ include_once('../php/header.php');
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">
+                    <a class="nav-link" href="../index.php">
                         Početna
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="frontend/usluge.php">Usluge</a>
+                    <a class="nav-link" href="usluge.php">Usluge</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Katalog</a>
+                    <a class="nav-link" href="katalog.php">Katalog</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="frontend/kontakt.php">Kontakt</a>
+                    <a class="nav-link" href="kontakt.php">Kontakt</a>
                 </li>
             </ul>
         </div>
@@ -65,7 +65,7 @@ include_once('../php/header.php');
 
             while ($row = $query->fetch()) {
                 echo '<div class="col-sm-6 col-md-6 col-lg-4 my-3">
-                <div class="card text-white bg-dark" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <div class="card text-white bg-dark border border-warning shadow">
                     <div class="card-body">
                         <h5 class="card-title">' . $row['usluga_naziv'] . '</h5>
                         <hr class="bg-secondary">

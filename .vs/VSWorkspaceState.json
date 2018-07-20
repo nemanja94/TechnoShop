@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\frontend",
-    "\\php",
     "\\php\\kategorije"
   ],
-  "SelectedNode": "\\frontend\\kontakt.php",
+  "SelectedNode": "\\frontend\\usluge.php",
   "PreviewInSolutionExplorer": false
 }
