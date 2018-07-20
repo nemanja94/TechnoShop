@@ -69,7 +69,7 @@ include_once('../php/header.php');
                     <div class="card-body">
                         <h5 class="card-title">' . $row['usluga_naziv'] . '</h5>
                         <hr class="bg-secondary">
-                        <p class="card-text">' . $row['usluga_cena'] . '</a>
+                        <p class="card-text">Cena: ' . $row['usluga_cena'] . 'rsd</a>
                     </div>
                 </div>
             </div>';
