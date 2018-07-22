@@ -42,7 +42,7 @@ include_once('../../php/header.php');
 
     <!-- Kartice koje prikazuju usliuge -->
     <hr />
-    <div class="container" style="height: 125em;">
+    <div class="container" style="height: 2160px;">
 
             <!--Tabs-->
             <div class="container">
@@ -169,9 +169,9 @@ include_once('../../php/header.php');
     <!-- Kartice koje prikazuju usluge -->
 
     <!-- Footer -->
-    <footer class="bg-dark p-3 text-center rounded-top">
+    <div class="bg-dark p-3 text-center rounded-top">
         <p class="text-light mb-0">Copyright &copy; TechnoShop R&D 2018</p>
-    </footer>
+    </div>
     <!-- Footer -->
 
     <!-- Stranica -->

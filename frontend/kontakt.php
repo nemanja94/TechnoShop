@@ -21,7 +21,7 @@ include_once('../php/header.php');
                     <a class="nav-link" href="../index.php">Početna</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="usluge.php">Usluge</a>
+                    <a class="nav-link" href="Usluge/usluge_servis_racunara.php">Usluge</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="katalog.php">Katalog</a>

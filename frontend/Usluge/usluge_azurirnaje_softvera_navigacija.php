@@ -42,7 +42,7 @@ include_once('../../php/header.php');
 
     <!-- Kartice koje prikazuju usliuge -->
     <hr />
-    <div class="container" style="height: 150em;">
+    <div class="container" style="height: 1080px;">
 
             <!--Tabs-->
             <div class="container">
