@@ -46,18 +46,18 @@ include_once('../../php/header.php');
 
             <!--Tabs-->
             <div class="container">
-                <ul class="nav nav-tabs nav-fill px-3 col-sm-1 col-md-12">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-dark" href="usluge_servis_racunara.php">Servis računara</a>
+                <ul class="nav nav-pills nav-fill p-3 border border-warning rounded shadow bg-light">
+                    <li class="nav-item m-2">
+                        <a class="nav-link text-dark border" href="usluge_servis_racunara.php">Servis računara</a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-warning active" href="usluge_servis_stampaca.php">Servis Štampača</a>
+                    <li class="nav-item m-2">
+                        <a class="nav-link bg-dark border border-warning text-warning shadow active" href="usluge_servis_stampaca.php">Servis Štampača</a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-dark" href="usluge_krimpovanje_kablova.php">Krimpovanje kablova</a>
+                    <li class="nav-item m-2">
+                        <a class="nav-link text-dark border" href="usluge_krimpovanje_kablova.php">Krimpovanje kablova</a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link text-dark" href="usluge_azurirnaje_softvera_navigacija.php">Azurirnaje softvera navigacija</a>
+                    <li class="nav-item m-2">
+                        <a class="nav-link text-dark border" href="usluge_azurirnaje_softvera_navigacija.php">Azurirnaje softvera navigacija</a>
                     </li>
                 </ul>
             </div>
