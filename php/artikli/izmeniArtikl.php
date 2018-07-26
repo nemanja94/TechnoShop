@@ -10,6 +10,9 @@ if (!empty($_POST)) {
     $novaCena = htmlspecialchars($_POST['cena']); //Moze da se menja se u bazi
     $novOpis = htmlspecialchars($_POST['opis']); //Moze da se menja se u bazi
     $novaSifra = htmlspecialchars($_POST['sifra']); //Moze da se menja se u bazi
+    $novaAkcija = htmlspecialchars($_POST['akcija']); //Moze da se menja se u bazi
+    $staraSifraArtikla = "";
+    $novaSlika = "";
 
     try {
 
@@ -30,11 +33,16 @@ if (!empty($_POST)) {
 
         $rowStalaSifraArtikla = $queryStaraSifraArtikla->fetch();
 
-        $staraSifraArtikla = $rowStalaSifraArtikla['artikl_sifra'];
+        $staraSifraArtikla = $rowStalaSifraArtikla['artikl_sifra']; //Stara sifra atikla
 
         Database::disconnect();
         //Pronalazenje sifre artikla iz tabele Artikl po prosledjenom id
 
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+
+    try {
 
         //Promena polja u tabeli Artikl
         $pdo = Database::connect();
@@ -44,7 +52,8 @@ if (!empty($_POST)) {
                           SET TechnoShop.Artikl.artikl_naziv = :naziv, 
                               TechnoShop.Artikl.artikl_opis = :opis, 
                               TechnoShop.Artikl.artikl_cena = :cena, 
-                              TechnoShop.Artikl.artikl_sifra = :sifra 
+                              TechnoShop.Artikl.artikl_sifra = :sifra,
+                              TechnoShop.Artikl.artikl_akcija = :akcija 
                           WHERE TechnoShop.Artikl.artikl_id = :id;'
         );
 
@@ -52,13 +61,18 @@ if (!empty($_POST)) {
         $queryAzuriranjeArtikla->bindParam(':cena', $novaCena);
         $queryAzuriranjeArtikla->bindParam(':opis', $novOpis);
         $queryAzuriranjeArtikla->bindParam(':sifra', $novaSifra);
+        $queryAzuriranjeArtikla->bindParam(':akcija', $novaAkcija);
         $queryAzuriranjeArtikla->bindParam(':id', $id);
 
         $queryAzuriranjeArtikla->execute();
 
         Database::disconnect();
-        //Promena polja u tabeli Artikli
 
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+
+    try {
 
         //Promena sifra artikla, odnosno naziva direktorijuma u tabeli Slike
         $pdo = Database::connect();
@@ -68,21 +82,24 @@ if (!empty($_POST)) {
                       SET TechnoShop.Slike.artikl_sifra = :novaSifra 
                       WHERE TechnoShop.Slike.artikl_sifra = :staraSifra;');
 
-        $queryAzuriranjeNazivaDierktorijuma->bindParam(':staraSifra', $staraSifraArtikla);
         $queryAzuriranjeNazivaDierktorijuma->bindParam(':novaSifra', $novaSifra);
+        $queryAzuriranjeNazivaDierktorijuma->bindParam(':staraSifra', $staraSifraArtikla);
 
         $queryAzuriranjeNazivaDierktorijuma->execute();
 
         Database::disconnect();
-        //Promena sifra artikla, odnosno naziva direktorijuma u tabeli Slike
 
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+
+
+    try {
 
         //Promena naziva direktorijuma u projektu
-        rename('../slike/' . $staraSifraArtikla, '../slike/' . $novaSifra);
+        rename('../slike/' . $staraSifraArtikla, $novaSifra);
         //Promena naziva direktorijuma u projektu
 
-
-        //Promena naziva slika u direktorijumu
         $pdo = Database::connect();
 
         $queryStariNazivSlike = $pdo->prepare(
@@ -105,23 +122,28 @@ if (!empty($_POST)) {
 
             $oldName = '../slike/' . $novaSifra . '/' . $sl;
 
-            $newName = '../slike/' . $novaSifra . '/' . $novaSifra . '-' . $prviNazivSlike[1];
+            $newName = $novaSifra . '-' . $prviNazivSlike[1];
 
             (rename($oldName, $newName));
 
-            //Promena sifra artikla, odnosno naziva direktorijuma u tabeli Slike
-            $queryAzuriranjeNazivaSlike = $pdo->prepare(
-                'UPDATE TechnoShop.Slike 
+            try {
+
+                //Promena sifra artikla, odnosno naziva direktorijuma u tabeli Slike
+                $queryAzuriranjeNazivaSlike = $pdo->prepare(
+                    'UPDATE TechnoShop.Slike 
                       SET TechnoShop.Slike.slika = :novaSlika 
                       WHERE TechnoShop.Slike.artikl_sifra = :nsifra;');
 
-            $novaSlika = $novaSifra . '-' . $prviNazivSlike[1];
+                $novaSlika = $novaSifra . '-' . $prviNazivSlike[1];
 
-            $queryAzuriranjeNazivaSlike->bindParam(':novaSlika', $novaSlika);
-            $queryAzuriranjeNazivaSlike->bindParam(':nsifra', $novaSifra);
+                $queryAzuriranjeNazivaSlike->bindParam(':novaSlika', $novaSlika);
+                $queryAzuriranjeNazivaSlike->bindParam(':nsifra', $novaSifra);
 
-            $queryAzuriranjeNazivaSlike->execute();
-            //Promena sifra artikla, odnosno naziva direktorijuma u tabeli Slike
+                $queryAzuriranjeNazivaSlike->execute();
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
 
         Database::disconnect();
@@ -130,11 +152,11 @@ if (!empty($_POST)) {
 
         header('Location: unosArtikl.php');
 
-    } catch (PDOException $e) {
+    } catch
+    (PDOException $e) {
 
         echo $e->getMessage();
 
     }
 }
-?>
 
